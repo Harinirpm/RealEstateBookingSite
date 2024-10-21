@@ -1,9 +1,7 @@
-import App from "../App";
 import React, {children, lazy, Suspense} from 'react';
 import Layout from "../components/Layout/Layout";
-
+import Companies from "../pages/Companies/Companies";
 const Home = lazy(() => import('../pages/Home'));
-
 const Routes = [
 {
     path:'/',
@@ -17,7 +15,14 @@ const Routes = [
                     </Suspense>
             )
         },
-
+        {
+            path: "/companies",
+            element: (
+                <Suspense fallback={<div>Loding...</div>}>
+                    <Companies />
+                </Suspense>
+            )
+        }
     ]
 },
 {
