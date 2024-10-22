@@ -8,8 +8,8 @@ function QuotationSummary() {
   const paymentDetails = [
     { label: "Total Amount", quantity: "3", value: "$ 3,600.00" },
     { label: "Total Discount", quantity: "10%", value: "- $ 100.00" },
-    { label: "Total Refundable", quantity: "0%", value: "$ 0"},
-    { label: "Total Tax", quantity: "18%", value: "$ 648.00"}
+    { label: "Total Refundable", quantity: "0%", value: "$ 0" },
+    { label: "Total Tax", quantity: "18%", value: "$ 648.00" },
   ];
 
   const grandTotal = paymentDetails.reduce((total, item) => {
@@ -22,12 +22,12 @@ function QuotationSummary() {
       sx={{
         backgroundColor: "#F5F7FA",
         ml: "20px",
-        mt: "10px",
+        mt: "-10px",
         mr: "20px",
         padding: "10px",
         borderRadius: "10px",
-        position:"fixed",
-        width:"26%"
+        position: "fixed",
+        width: "26%",
       }}
     >
       <PaymentData items={paymentDetails} grandTotal={grandTotal.toFixed(2)} />
@@ -38,18 +38,22 @@ function QuotationSummary() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "170px",
+            marginTop: "100px",
             // marginBottom: "20px",
           }}
         >
-          <Divider sx={{ my: 1, width: "100%", }} />
+          <Divider sx={{ my: 1, width: "100%" }} />
         </Box>
 
         <Box
           sx={{ display: "flex", justifyContent: "space-between", ml: "20px" }}
         >
-          <Typography sx={{fontSize:"17px",fontWeight:600}}>Quote Amount</Typography>
-          <Typography sx={{fontSize:"17px",fontWeight:600}}>$ 4,148.00</Typography>
+          <Typography sx={{ fontSize: "17px", fontWeight: 600 }}>
+            Quote Amount
+          </Typography>
+          <Typography sx={{ fontSize: "17px", fontWeight: 600 }}>
+            $ 4,148.00
+          </Typography>
         </Box>
       </Box>
     </Box>

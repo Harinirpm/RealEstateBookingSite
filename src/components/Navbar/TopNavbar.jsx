@@ -10,7 +10,7 @@ import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Logo from '../../assets/logo.png';
 import  Divider from '@mui/material/Divider';
@@ -81,11 +81,6 @@ function TopNavbar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-  // const [invisible, setInvisible] = React.useState(false);
-
-  // const handleBadgeVisibility = () => {
-  //   setInvisible(!invisible);
-  // };
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -133,7 +128,7 @@ function TopNavbar() {
           color="inherit"
         >
          <Badge color="secondary" variant="dot">
-          <NotificationsIcon />
+          <NotificationsNoneOutlinedIcon />
         </Badge>
         </IconButton>
         <p>Notifications</p>
@@ -180,7 +175,7 @@ function TopNavbar() {
             component="div"
             sx={{
               display: { xs: 'none', sm: 'block' },
-              fontSize: { xs: '10px', sm: '14px', md: '16px' }, // Responsive font size
+              fontSize: { xs: '10px', sm: '14px', md: '16px' }, 
               textTransform: 'none',
               flexGrow: 1,
             }}
@@ -203,12 +198,21 @@ function TopNavbar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
-              mr="40px"
+              mr="10px"
             >
               <div>
-        <Badge color="primary" variant="dot">
-          <NotificationsIcon />
-        </Badge>
+              <Badge
+        color="primary"
+        variant="dot"
+        sx={{
+          position: 'absolute', 
+          right: '20px',
+          top: '20px', 
+         
+        }}
+      >
+        <NotificationsNoneOutlinedIcon sx={{ position:"absolute", fontSize: "30px",top:"-5px",right:"-7px" }} />
+      </Badge>
       </div>
             </IconButton>
            

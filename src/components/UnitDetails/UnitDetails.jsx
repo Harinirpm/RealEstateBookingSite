@@ -10,12 +10,12 @@ import RoomImg from "../../assets/room.jpg";
 import HotelOutlinedIcon from "@mui/icons-material/HotelOutlined";
 import { BiBath } from "react-icons/bi";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import DialogBox from "../DialogBox/DialogBox";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import DialogBox from "../CustomDialogBox/DialogBox";
 import CustomiseButton from "../CustomiseButton/CustomiseButton";
 
 function UnitDetails() {
-  const [open, setOpen] = useState(false); 
+  const [open, setOpen] = useState(false);
   const [selectedLand, setSelectedLand] = useState(null);
 
   const landDetails = [
@@ -57,12 +57,19 @@ function UnitDetails() {
   };
 
   const handleClose = () => {
-    setOpen(false); 
+    setOpen(false);
   };
 
-  
   return (
-    <Box className={open ? "blur-background" : ""} sx={{ mt: "20px", overflowY: "scroll", msScrollbarWidth: "none", scrollbarWidth: "none" }}>
+    <Box
+      className={open ? "blur-background" : ""}
+      sx={{
+        mt: "20px",
+        overflowY: "scroll",
+        msScrollbarWidth: "none",
+        scrollbarWidth: "none",
+      }}
+    >
       <Box
         sx={{
           display: "grid",
@@ -71,27 +78,26 @@ function UnitDetails() {
         }}
       >
         {landDetails.map((land, index) => (
-         
-            <Card
+          <Card
             key={index}
-              sx={{
-                maxWidth: 390,
-                borderRadius: "8px",
-                boxShadow: "none",
-                border: "1px solid #e1e3e6",
-              }}
-            >
-               <Button
-            onClick={() => handleClickOpen(land)}
-            disableTouchRipple
             sx={{
-              "&:hover": {
-                backgroundColor: "transparent",
-                boxShadow: "none",
-              },
-              textTransform: "none",
+              maxWidth: 390,
+              borderRadius: "8px",
+              boxShadow: "none",
+              border: "1px solid #e1e3e6",
             }}
           >
+            <Button
+              onClick={() => handleClickOpen(land)}
+              disableTouchRipple
+              sx={{
+                "&:hover": {
+                  backgroundColor: "transparent",
+                  boxShadow: "none",
+                },
+                textTransform: "none",
+              }}
+            >
               <CardMedia
                 sx={{
                   height: 150,
@@ -107,8 +113,8 @@ function UnitDetails() {
               >
                 <Box
                   sx={{
-                    height: "35px",
-                    width: "35px",
+                    height: "30px",
+                    width: "30px",
                     borderRadius: "50%",
                     backgroundColor: "white",
                     color: "red",
@@ -120,54 +126,85 @@ function UnitDetails() {
                     alignItems: "center",
                   }}
                 >
-                  <DeleteOutlinedIcon sx={{ fontSize: "25px", mt: "2px" }} />
+                  <DeleteOutlinedIcon sx={{ fontSize: "20px", mt: "1px" }} />
                 </Box>
               </CardMedia>
-              </Button>
-              <CardContent sx={{mt:"-10px"}}>
-                <Box display="flex" justifyContent="space-between">
-                  <Typography gutterBottom sx={{ fontWeight: "600" }}>
-                    {land.name}
-                  </Typography>
-                  <Typography gutterBottom sx={{ fontWeight: "600" }}>
-                    {land.price}
-                  </Typography>
-                </Box>
-                <Box display="flex" justifyContent="space-between" alignItems="center" sx={{mt:"-10px"}}>
-                  <Typography sx={{ fontWeight: "500", color: "#98A0AC", fontSize: "13px", }}>
-                    {land.estatename}
-                  </Typography>
-                  <Typography sx={{ color: "#98A0AC", fontSize: "20px", mb: "7px" }}>
-                    {"\u2022"}
-                  </Typography>
-                  <Typography sx={{ fontWeight: "500", color: "#98A0AC", fontSize: "10px" }}>
-                    {land.sqft}
-                  </Typography>
-                </Box>
-                <Box display="flex" justifyContent="space-between"  mb="-30px" >
-                  {items.map((item, index) => (
-                    <Box key={index} display="flex" alignItems="center" color="#98A0AC" fontSize={20}>
-                      {item.icon}
-                      <Typography sx={{ color: "#98A0AC", ml: "10px" }}>{item.text}</Typography>
-                      {index !== items.length - 1 && (
-                        <Typography sx={{ color: "#98A0AC", fontSize: "20px", mb: "7px", ml: "10px" }}>
-                          {"\u2022"}
-                        </Typography>
-                      )}
-                    </Box>
-                  ))}
-                </Box>
-              </CardContent>
-              <CardActions sx={{ alignItems: "center", justifyContent: "center" }}>
-                <CustomiseButton />
-              </CardActions>
-            </Card>
-          
+            </Button>
+            <CardContent sx={{ mt: "-10px" }}>
+              <Box display="flex" justifyContent="space-between">
+                <Typography gutterBottom sx={{ fontWeight: "600" }}>
+                  {land?.name}
+                </Typography>
+                <Typography gutterBottom sx={{ fontWeight: "600" }}>
+                  {land?.price}
+                </Typography>
+              </Box>
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{ mt: "-10px" }}
+              >
+                <Typography
+                  sx={{ fontWeight: "500", color: "#98A0AC", fontSize: "13px" }}
+                >
+                  {land.estatename}
+                </Typography>
+                <Typography
+                  sx={{ color: "#98A0AC", fontSize: "20px", mb: "7px" }}
+                >
+                  {"\u2022"}
+                </Typography>
+                <Typography
+                  sx={{ fontWeight: "500", color: "#98A0AC", fontSize: "10px" }}
+                >
+                  {land.sqft}
+                </Typography>
+              </Box>
+              <Box display="flex" justifyContent="space-between" mb="-30px">
+                {items.map((item, index) => (
+                  <Box
+                    key={index}
+                    display="flex"
+                    alignItems="center"
+                    color="#98A0AC"
+                    fontSize={20}
+                  >
+                    {item.icon}
+                    <Typography sx={{ color: "#98A0AC", ml: "10px" }}>
+                      {item.text}
+                    </Typography>
+                    {index !== items.length - 1 && (
+                      <Typography
+                        sx={{
+                          color: "#98A0AC",
+                          fontSize: "20px",
+                          mb: "7px",
+                          ml: "10px",
+                        }}
+                      >
+                        {"\u2022"}
+                      </Typography>
+                    )}
+                  </Box>
+                ))}
+              </Box>
+            </CardContent>
+            <CardActions
+              sx={{ alignItems: "center", justifyContent: "center" }}
+            >
+              <CustomiseButton />
+            </CardActions>
+          </Card>
         ))}
       </Box>
 
       {selectedLand && (
-        <DialogBox open={open} onClose={handleClose} selectedLand={selectedLand} />
+        <DialogBox
+          open={open}
+          onClose={handleClose}
+          selectedLand={selectedLand}
+        />
       )}
     </Box>
   );

@@ -22,7 +22,7 @@ function QuotationDetails() {
         }}
       >
         <BreadCrumbs />
-        {/*Grid */}
+
         <Box
           sx={{
             width: "100%",
@@ -38,7 +38,6 @@ function QuotationDetails() {
             flexGrow={1}
             marginTop={0}
           >
-            {/* section 1*/}
             <Grid2
               xs={6}
               flex={1}
@@ -50,7 +49,6 @@ function QuotationDetails() {
               <LeadDetails />
             </Grid2>
 
-            {/* section 2*/}
             <Grid2
               xs={6}
               flex={1}
@@ -59,8 +57,8 @@ function QuotationDetails() {
                 height: "60vh",
                 borderRadius: "10px",
                 mt: "3px",
-                overflowY:"scroll",
-                scrollbarWidth:"none",
+                overflowY: "scroll",
+                scrollbarWidth: "none",
               }}
             >
               <Box
@@ -68,34 +66,33 @@ function QuotationDetails() {
                   // ml: "10px",
                   display: "flex",
                   flexDirection: "column",
-                 
-                  
                 }}
               >
-                <Box sx={{position:"fixed",
-                    zIndex:"1000",
-                    backgroundColor:"#F5F7FA",
-                    height:"50px",
-                    width:"30%",
-                    
-                    }}>
-                <Typography
+                <Box
                   sx={{
-                    fontSize: "20px",
-                    fontWeight: "bold",
-                    mt:"10px",
+                    position: "fixed",
+                    zIndex: "1000",
+                    backgroundColor: "#F5F7FA",
+                    height: "50px",
+                    width: "30%",
                   }}
                 >
-                  Unit Details
-                </Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      mt: "10px",
+                    }}
+                  >
+                    Unit Details
+                  </Typography>
                 </Box>
-                <Box sx={{mt:"30px"}}>
-                <UnitDetails />
+                <Box sx={{ mt: "30px" }}>
+                  <UnitDetails />
                 </Box>
               </Box>
             </Grid2>
-
-            {/* section 3*/}
+            
             <Grid2
               md={6}
               flex={1}

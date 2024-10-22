@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -15,85 +16,83 @@ const MenuProps = {
       width: 250,
     },
   },
-}; 
+};
 
-const names = [
-    'Casagrand',
-    'Leelaland',
-
-  ];
-
-  
-function Dropdown() {
-
-    const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+function Dropdown({ options = [], placeholder = "Select...", label = "Dropdown" }) {
+  const theme = useTheme();
+  const [selectedOptions, setSelectedOptions] = React.useState([]);
 
   const handleChange = (event) => {
     const {
       target: { value },
     } = event;
-    setPersonName(
+    setSelectedOptions(
       typeof value === 'string' ? value.split(',') : value,
     );
   };
 
   return (
     <div>
-        <FormControl sx={{ m: 0, width: 200,maxHeight:1 ,border:"none",boxShadow:"none"}}>
+      <FormControl 
+        sx={{
+          m: 0, 
+          width: '90%', 
+          maxWidth: 300, 
+          border: "none", 
+          boxShadow: "none" 
+        }}
+      >
         <Select
-          multiple
+          
           displayEmpty
-          value={personName}
+          value={selectedOptions}
           onChange={handleChange}
           input={<OutlinedInput />}
           renderValue={(selected) => {
             if (selected.length === 0) {
-              return <Typography>Casaland</Typography>;
+              return <Typography>{placeholder}</Typography>;
             }
-
             return selected.join(', ');
           }}
           MenuProps={MenuProps}
-          inputProps={{ 'aria-label': 'Without label' }}
+          inputProps={{ 'aria-label': label }}
+          IconComponent={KeyboardArrowDownIcon} 
           sx={{
-            height:"40px",
-            width:"100%",
-            borderRadius:"10px",
-            backgroundColor:"#F5F7FA",
-            // border:"none",
-            border:"1px solid #F5F7FA",
-            boxShadow:"none",
+            height: "45px",
+            width: "100%", 
+            borderRadius: "5px", 
+            backgroundColor: "white", 
+            // border: "1px solid #ccc", 
+            boxShadow: "none",
+            padding: "8px 12px", 
             '&.Mui-focused': {
-        border: "1px solid #F5F7FA", 
-        boxShadow:"none",
-      },
-      '&:hover': {
-        border: "1px solid #F5F7FA", 
-        boxShadow:"none",
-      },
-      "&:active": {
-        border:"none",
-      }
+              border: "1px solid black", 
+              boxShadow: "none",
+            },
+            '&:hover': {
+              border: "1px solid #999", 
+              boxShadow: "none",
+            },
+            "&:active": {
+              border: "none",
+            },
+            '& .MuiInputBase-input': {
+                    fontWeight: 600, 
+                  },
           }}
         >
-          <MenuItem disabled value="" >
-            <Typography>Casagrand</Typography>
+          <MenuItem disabled value="">
+            <Typography>{placeholder}</Typography>
           </MenuItem>
-          {names.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-            //   style={getStyles(name, personName, theme)}
-            >
-              {name}
+          {options.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-      
     </div>
-  )
+  );
 }
 
-export default Dropdown
+export default Dropdown;

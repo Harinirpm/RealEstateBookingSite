@@ -10,7 +10,7 @@ const Routes = [
         {
             path: "/",
             element: (
-                <Suspense fallback={<div>Loding...</div>}>
+                <Suspense fallback={<div>Loading...</div>}>
                     <Home />
                     </Suspense>
             )
@@ -18,7 +18,7 @@ const Routes = [
         {
             path: "/companies",
             element: (
-                <Suspense fallback={<div>Loding...</div>}>
+                <Suspense fallback={<div>Loading...</div>}>
                     <Companies />
                 </Suspense>
             )

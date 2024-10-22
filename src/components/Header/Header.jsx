@@ -11,6 +11,7 @@ function Header()
   {
     setAge(event.target.value);
   };
+  const options1 = ['Casagrand', 'Leelaland'];
 
   return (
     <Box
@@ -52,56 +53,9 @@ function Header()
         </Typography>
       </Box>
       <Box sx={{ position: "relative", width: "210px", backgroundColor: "white" }}>
-        <Dropdown />
+
+        <Dropdown options={options1} placeholder='Casagrand'/>
       </Box>
-     {/* <Box sx={{ position: "relative", width: "210px", backgroundColor: "white" }}>
-      <FormControl 
-        variant="outlined" 
-        sx={{
-          width: "40%",
-          height:"auto",
-          backgroundColor: "white",
-          border: "1px solid black",
-          borderRadius: "4px",
-          padding: "8px 12px",
-          fontSize: "16px",
-        }}
-      >
-        <InputLabel id="custom-select-label" sx={{ top: "-6px" }}>Age</InputLabel>
-        <Select
-          labelId="custom-select-label"
-          id="custom-select"
-          value={age}
-          onChange={handleChange}
-          label="Age"
-          IconComponent={ExpandMoreIcon}
-          sx={{
-            appearance: "none",
-            width: "100%",
-            padding: "8px 0",
-            fontSize: "16px",
-            '& fieldset': {
-              border: "none", // Remove the default border
-            },
-            '&:focus-visible': {
-              border: "3px solid black", // Focused state
-            },
-            '& .MuiSelect-icon': {
-              right: "10px",
-              color: "black",
-            },
-          }}
-        >
-          <MenuItem value="" disabled>
-            <em>Age</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl> 
-     </Box>  */}
-      
     </Box>
   );
 }

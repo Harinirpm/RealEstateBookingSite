@@ -13,6 +13,11 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import Badge from "@mui/material/Badge";
 import Primary from "../AllPopup/Primary"; 
+import Secondary from "../AllPopup/Secondary";
+import OneTimeChanges from "../AllPopup/OneTimeChanges";
+import Refundable from "../AllPopup/Refundable";
+import InventoryItem from '../AllPopup/InventoryItem';
+import ParkingSlot from "../AllPopup/ParkingSlot";
 const PricingPopup = ({ open, onClose }) => {
   const [selectedPopup, setSelectedPopup] = useState(null); 
   const items = [
@@ -85,80 +90,120 @@ const PricingPopup = ({ open, onClose }) => {
       <Divider sx={{ width: "100%", color: "gray" }} />
 
       <DialogContent>
-        {selectedPopup === null ? ( 
-          items.map((item, index) => (
-            <Box key={index} sx={{ display: "flex", flexDirection: "column" }}>
+  {selectedPopup === null ? (
+    items.map((item, index) => (
+      <Box key={index} sx={{ display: "flex", flexDirection: "column" }}>
+        <Button
+          color={item.bgcolor}
+          sx={{ textTransform: "none" }}
+          disableTouchRipple
+          onClick={() => handleOpenPopup(index)}
+        >
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            backgroundColor={item.bgcolor}
+            sx={{
+              height: "10%",
+              width: "95%",
+              borderRadius: "7px",
+              padding: "20px",
+              mb: "10px",
+            }}
+          >
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
+            >
+              <Badge
+                badgeContent={index + 1}
+                sx={{
+                  mr: "20px",
+                  "& .MuiBadge-badge": {
+                    backgroundColor: item.color,
+                    color: "white",
+                  },
+                }}
+              />
+              <Typography color={item.color} sx={{ fontSize: "20px" }}>
+                {item.text}
+              </Typography>
+            </Box>
+            <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+            >
               <Button
-                color={item.bgcolor}
-                sx={{ textTransform: "none" }}
-                disableTouchRipple
-                onClick={() => handleOpenPopup(index)}
+                sx={{
+                  borderRadius: "50px 50px",
+                  color: item.color,
+                  "&:hover": { backgroundColor: `${item.color}33` },
+                }}
               >
-                <Box
-                  display="flex"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                  backgroundColor={item.bgcolor}
-                  sx={{
-                    height: "10%",
-                    width: "95%",
-                    borderRadius: "7px",
-                    padding: "20px",
-                    mb: "10px",
-                  }}
-                >
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="space-between"
-                    alignItems="center"
-                  >
-                    <Badge
-                      badgeContent={index + 1}
-                      sx={{
-                        mr: "20px",
-                        "& .MuiBadge-badge": {
-                          backgroundColor: item.color,
-                          color: "white",
-                        },
-                      }}
-                    />
-                    <Typography color={item.color} sx={{ fontSize: "20px" }}>
-                      {item.text}
-                    </Typography>
-                  </Box>
-                  <Box
-                    display="flex"
-                    flexDirection="row"
-                    justifyContent="space-between"
-                  >
-                    <Button
-                      sx={{
-                        borderRadius: "50px 50px",
-                        color: item.color,
-                        "&:hover": { backgroundColor: `${item.color}33` },
-                      }}
-                    >
-                      {item.icon2}
-                    </Button>
-                    <Button sx={{ color: "black", borderRadius: "50px 50px" }}>
-                      {React.cloneElement(item.icon1, {
-                        sx: { fontSize: "17px" },
-                      })}
-                    </Button>
-                  </Box>
-                </Box>
+                {item.icon2}
+              </Button>
+              <Button sx={{ color: "black", borderRadius: "50px 50px" }}>
+                {React.cloneElement(item.icon1, {
+                  sx: { fontSize: "17px" },
+                })}
               </Button>
             </Box>
-          ))
-        ) : (
-          <>
-            {selectedPopup === 0 && <Primary onClose={handleClosePopup} />}
-            {selectedPopup === 1 && <Primary onClose={handleClosePopup} />}
-            {selectedPopup === 2 && <Primary onClose={handleClosePopup} />}
-          </>
-        )}
-      </DialogContent>
+          </Box>
+        </Button>
+      </Box>
+    ))
+  ) : (
+    <>
+      {selectedPopup === 0 && (
+        <Primary
+          onClose={handleClosePopup}
+          title="Primary Plan"
+          content="Details of the Primary Plan go here."
+        />
+      )}
+      {selectedPopup === 1 && (
+        <Secondary
+          onClose={handleClosePopup}
+          title="Secondary Plan"
+          content="Details of the Secondary Plan go here."
+        />
+      )}
+      {selectedPopup === 2 && (
+        <OneTimeChanges
+          onClose={handleClosePopup}
+          title="One Time Charges"
+          content="Details of the One Time Charges go here."
+        />
+      )}
+      {selectedPopup === 3 && (
+        <Refundable
+          onClose={handleClosePopup}
+          title="One Time Charges"
+          content="Details of the One Time Charges go here."
+        />
+      )}
+      {selectedPopup === 4 && (
+        <InventoryItem
+          onClose={handleClosePopup}
+          title="One Time Charges"
+          content="Details of the One Time Charges go here."
+        />
+      )}
+      {selectedPopup === 5 && (
+        <ParkingSlot
+          onClose={handleClosePopup}
+          title="One Time Charges"
+          content="Details of the One Time Charges go here."
+        />
+      )}
+    </>
+  )}
+</DialogContent>
+
     </Dialog>
   );
 };

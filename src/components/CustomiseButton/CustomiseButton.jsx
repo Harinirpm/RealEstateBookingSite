@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, MenuItem, Popover, Divider, Button } from "@mui/material";
 import PricingPopup from "../PricingPopup/PricingPopup";
-import DialogBox from "../DialogBox/DialogBox";
+import DialogBox from "../CustomDialogBox/DialogBox";
 
 const PricingMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,7 +33,7 @@ const PricingMenu = () => {
         transition: "filter 0.3s ease-in-out",
       }}
     >
-      <Button onClick={handlePopoverOpen}>+ Customise</Button>
+      <Button onClick={handlePopoverOpen} sx={{textTransform:"none"}}>+ Customise</Button>
       <Popover
         open={open}
         anchorEl={anchorEl}

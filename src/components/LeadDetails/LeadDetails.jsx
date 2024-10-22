@@ -5,7 +5,9 @@ import Avatar1 from "../../assets/avatar1.png";
 function LeadDetails() {
   return (
     <Box sx={{ padding: "5%" }}>
-      <Typography sx={{ fontWeight: 640, fontSize: "20px",fontFamily: 'Nunito Sans' }}>
+      <Typography
+        sx={{ fontWeight: 640, fontSize: "20px", fontFamily: "Nunito Sans" }}
+      >
         Lead Details
       </Typography>
       <Box
@@ -32,7 +34,7 @@ function LeadDetails() {
               sx={{
                 fontSize: "18px",
                 fontWeight: 640,
-                fontFamily: 'Nunito Sans',
+                fontFamily: "Nunito Sans",
               }}
             >
               Tom Cruise
@@ -47,7 +49,7 @@ function LeadDetails() {
                 alignItems: "center",
                 borderRadius: "8px",
                 ml: "10px",
-                fontFamily: 'Nunito Sans',
+                fontFamily: "Nunito Sans",
               }}
             >
               Prospect
@@ -58,7 +60,7 @@ function LeadDetails() {
               sx={{
                 color: "#4E5A6B",
                 fontSize: "14px",
-                fontFamily: 'Nunito Sans',
+                fontFamily: "Nunito Sans",
               }}
             >
               +91 9090808012
@@ -70,7 +72,7 @@ function LeadDetails() {
               sx={{
                 color: "#4E5A6B",
                 fontSize: "14px",
-                fontFamily: 'Nunito Sans',
+                fontFamily: "Nunito Sans",
               }}
             >
               Tomcruise2515@gmail.com
@@ -78,29 +80,116 @@ function LeadDetails() {
           </Box>
         </Box>
       </Box>
-       <Typography sx={{ fontWeight: 640, fontSize: "20px",mt:"30px",fontFamily: 'Nunito Sans',}}>Quotation Details</Typography>
-      <Box display="flex" flexDirection="row" justifyContent="space-between" sx={{mt:"20px"}}>
-
+      <Typography
+        sx={{
+          fontWeight: 640,
+          fontSize: "20px",
+          mt: "30px",
+          fontFamily: "Nunito Sans",
+        }}
+      >
+        Quotation Details
+      </Typography>
+      <Box
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        sx={{ mt: "20px" }}
+      >
         <Box display="flex" flexDirection="column">
-            <Typography sx={{fontSize:"12px", color:"#98A0AC",fontFamily: 'Nunito Sans',}}>LEASE START DATE</Typography>
-            <Typography sx={{fontSize:"18px", fontWeight:600,mt:"10px",fontFamily: 'Nunito Sans',}}>30 Jan 22</Typography>
+          <Typography
+            sx={{
+              fontSize: "12px",
+              color: "#98A0AC",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            LEASE START DATE
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "18px",
+              fontWeight: 600,
+              mt: "10px",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            30 Jan 22
+          </Typography>
         </Box>
         <Box display="flex" flexDirection="column">
-            <Typography sx={{fontSize:"12px", color:"#98A0AC",fontFamily: 'Nunito Sans',}}>LEASE END DATE</Typography>
-            <Typography sx={{fontSize:"18px", fontWeight:600,mt:"10px",fontFamily: 'Nunito Sans',}}>30 Jan 23</Typography>
+          <Typography
+            sx={{
+              fontSize: "12px",
+              color: "#98A0AC",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            LEASE END DATE
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "18px",
+              fontWeight: 600,
+              mt: "10px",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            30 Jan 23
+          </Typography>
         </Box>
         <Box display="flex" flexDirection="column">
-            <Typography sx={{fontSize:"12px", color:"#98A0AC",fontFamily: 'Nunito Sans',}}>RENT START DATE</Typography>
-            <Typography sx={{fontSize:"18px", fontWeight:600,mt:"10px",fontFamily: 'Nunito Sans',}}>30 Jan 23</Typography>
+          <Typography
+            sx={{
+              fontSize: "12px",
+              color: "#98A0AC",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            RENT START DATE
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "18px",
+              fontWeight: 600,
+              mt: "10px",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            30 Jan 23
+          </Typography>
         </Box>
       </Box>
-      <Box display="flex" flexDirection="column" sx={{mt:"20px"}}>
-            <Typography sx={{fontSize:"12px", color:"#98A0AC",fontFamily: 'Nunito Sans',}}>GRACE PERIOD</Typography>
-            <Box display="flex" flexDirection="row" alignItems="center">
-            <Typography sx={{fontSize:"18px", fontWeight:600,mt:"10px",fontFamily: 'Nunito Sans',}}>90 Days</Typography>
-            <Typography sx={{fontSize:"18px",color:"#98A0AC", ml: "10px",mt:"10px",fontFamily: 'Nunito Sans', }}>(Beggining)</Typography>
-            </Box>
+      <Box display="flex" flexDirection="column" sx={{ mt: "20px" }}>
+        <Typography
+          sx={{ fontSize: "12px", color: "#98A0AC", fontFamily: "Nunito Sans" }}
+        >
+          GRACE PERIOD
+        </Typography>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <Typography
+            sx={{
+              fontSize: "18px",
+              fontWeight: 600,
+              mt: "10px",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            90 Days
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "18px",
+              color: "#98A0AC",
+              ml: "10px",
+              mt: "10px",
+              fontFamily: "Nunito Sans",
+            }}
+          >
+            (Beggining)
+          </Typography>
         </Box>
+      </Box>
     </Box>
   );
 }
