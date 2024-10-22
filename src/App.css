@@ -1,4 +1,8 @@
 #root {
-  margin: 0 auto;
-  font-family: 'Poppins';
+  margin: 0;
+  font-family: 'Nunito Sans';
+  padding: 0;
+  background-color: #166bc0;
+  height: 98vh;
+  box-sizing: border-box;
 }
