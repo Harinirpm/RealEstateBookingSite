@@ -3,6 +3,7 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
+import Box from "@mui/material/Box";
 
 
 function handleClick(event) {
@@ -90,7 +91,8 @@ function BreadCrumbs() {
         alignItems: "center",
       }}
     >
-      <Badge badgeContent={4} color="primary" sx={{ mr: "20px" }} /> Preview and
+      <Box sx={{height:"25px",width:"25px",border:"1px solid blue",borderRadius:'50px',mr:"20px" }}>
+      <Badge badgeContent={4} color="primary" sx={{ mr: "20px",position:"absolute",right:"682px",top:"197px"}} /> </Box>Preview and
       Create
     </Link>,
   ];

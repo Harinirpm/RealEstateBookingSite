@@ -78,13 +78,13 @@ function PaymentData({ items = [], totals = [] }) {
                   mt: "8px",
                   flexBasis: "22%",
                   textAlign: "right",
-                  fontWeight: item.value === "100"
-                  ? "400" 
-                  : item.value.includes("$") || 
-                    ["3000", "0", "648"].includes(item.value.replace(/[^0-9]/g, ''))
-                    ? "600" 
-                    : "200", 
-                }}
+                  fontWeight: item.value === "- $ 100.00" 
+                      ? "400" 
+                      : item.value.includes("$") || 
+                        ["3000", "0", "648"].includes(item.value.replace(/[^0-9]/g, '')) 
+                      ? "600" 
+                      : "200", 
+                  }}
               >
                 {item.value}
               </Typography>

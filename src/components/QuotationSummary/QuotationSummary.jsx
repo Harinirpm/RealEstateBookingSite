@@ -11,6 +11,7 @@ function QuotationSummary() {
     { label: "Total Refundable", quantity: "0%", value: "$ 0" },
     { label: "Total Tax", quantity: "18%", value: "$ 648.00" },
   ];
+  // const { items, quoteAmount } = useSelector((state) => state.payment);
 
   const grandTotal = paymentDetails.reduce((total, item) => {
     const valueAsNumber = parseFloat(item.value.replace(/SAR|,/g, "").trim());

@@ -18,37 +18,41 @@ function UnitDetails() {
   const [open, setOpen] = useState(false);
   const [selectedLand, setSelectedLand] = useState(null);
 
-  const landDetails = [
+  const [landDetails, setLandDetails] = useState([
     {
+      id: 1,
       name: "Jusmaria Estate",
       price: "$ 1,200",
       estatename: " Jumeirah Golf Estate",
       sqft: "2000 Sq.Ft",
     },
     {
+      id: 2,
       name: "Jusmaria Estate",
       price: "$ 1,200",
       estatename: " Jumeirah Golf Estate",
       sqft: "2000 Sq.Ft",
     },
     {
+      id: 3,
       name: "Jusmaria Estate",
       price: "$ 1,200",
       estatename: " Jumeirah Golf Estate",
       sqft: "2000 Sq.Ft",
     },
     {
+      id: 4,
       name: "Jusmaria Estate",
       price: "$ 1,200",
       estatename: " Jumeirah Golf Estate",
       sqft: "2000 Sq.Ft",
     },
-  ];
+  ]);
 
   const items = [
-    { icon: <HotelOutlinedIcon />, text: "2" },
-    { icon: <BiBath />, text: "2" },
-    { icon: <HomeOutlinedIcon />, text: "2BHK" },
+    { icon: <HotelOutlinedIcon sx={{ fontSize: "20px" }} />, text: "2" },
+    { icon: <BiBath sx={{ fontSize: "20px" }} />, text: "2" },
+    { icon: <HomeOutlinedIcon sx={{ fontSize: "20px" }} />, text: "2BHK" },
   ];
 
   const handleClickOpen = (land) => {
@@ -58,6 +62,13 @@ function UnitDetails() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleDelete = (id) => {
+    const updatedLandDetails = landDetails.filter(
+      (land) => land.id !== id
+    );
+    setLandDetails(updatedLandDetails);
   };
 
   return (
@@ -77,9 +88,9 @@ function UnitDetails() {
           gap: "10px",
         }}
       >
-        {landDetails.map((land, index) => (
+        {landDetails.map((land) => (
           <Card
-            key={index}
+            key={land.id}
             sx={{
               maxWidth: 390,
               borderRadius: "8px",
@@ -88,7 +99,7 @@ function UnitDetails() {
             }}
           >
             <Button
-              onClick={() => handleClickOpen(land)}
+              
               disableTouchRipple
               sx={{
                 "&:hover": {
@@ -101,14 +112,16 @@ function UnitDetails() {
               <CardMedia
                 sx={{
                   height: 150,
-                  width: 227,
-                  ml: "1px",
-                  mt: "1px",
+                  width: 220,
+                  ml: "3px",
+                  mt: "5px",
                   mr: "20px",
                   borderRadius: "8px",
                   position: "relative",
+                  cursor:"pointer"
                 }}
                 image={RoomImg}
+                onClick={() => handleClickOpen(land)} 
                 title="room"
               >
                 <Box
@@ -116,7 +129,7 @@ function UnitDetails() {
                     height: "30px",
                     width: "30px",
                     borderRadius: "50%",
-                    backgroundColor: "white",
+                    backgroundColor: "#f0eeed",
                     color: "red",
                     position: "absolute",
                     top: "10px",
@@ -124,7 +137,12 @@ function UnitDetails() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    cursor: "pointer", 
                   }}
+                  onClick={(e) => {
+                    e.stopPropagation(); 
+                    handleDelete(land.id);
+                  }} 
                 >
                   <DeleteOutlinedIcon sx={{ fontSize: "20px", mt: "1px" }} />
                 </Box>
@@ -151,7 +169,7 @@ function UnitDetails() {
                   {land.estatename}
                 </Typography>
                 <Typography
-                  sx={{ color: "#98A0AC", fontSize: "20px", mb: "7px" }}
+                  sx={{ color: "#bdbdbd", fontSize: "20px", mb: "0px" }}
                 >
                   {"\u2022"}
                 </Typography>
@@ -168,18 +186,19 @@ function UnitDetails() {
                     display="flex"
                     alignItems="center"
                     color="#98A0AC"
-                    fontSize={20}
+                    sx={{
+                      fontSize:"20px"
+                    }}
                   >
                     {item.icon}
-                    <Typography sx={{ color: "#98A0AC", ml: "10px" }}>
+                    <Typography sx={{ color: "#98A0AC", ml: "10px",fontSize:"15px" }}>
                       {item.text}
                     </Typography>
                     {index !== items.length - 1 && (
                       <Typography
                         sx={{
-                          color: "#98A0AC",
+                          color: "#bdbdbd ",
                           fontSize: "20px",
-                          mb: "7px",
                           ml: "10px",
                         }}
                       >
@@ -191,7 +210,7 @@ function UnitDetails() {
               </Box>
             </CardContent>
             <CardActions
-              sx={{ alignItems: "center", justifyContent: "center" }}
+              sx={{ alignItems: "center", justifyContent: "center",mt:"10px" }}
             >
               <CustomiseButton />
             </CardActions>

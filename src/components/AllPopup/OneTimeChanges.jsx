@@ -10,18 +10,10 @@ import {
 // import Buttons from '../Button/Button';
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   TextField,
-  ToggleButtonGroup,
-  ToggleButton,
   InputAdornment,
-  MenuItem,
-  LinearProgress,
-  Tooltip,
 } from "@mui/material";
-import { linearProgressClasses } from "@mui/material/LinearProgress";
-import { styled } from "@mui/material/styles";
 import Dropdown from "../Dropdown/Dropdown";
 
 const OneTimeChanges = ({ onClose }) => {

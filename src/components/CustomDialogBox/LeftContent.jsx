@@ -8,18 +8,19 @@ import {
 } from "@mui/material";
 import TabletAndroidIcon from "@mui/icons-material/TabletAndroid";
 import HotelOutlinedIcon from "@mui/icons-material/HotelOutlined";
-import { BiBath } from "react-icons/bi";
-import BathtubOutlinedIcon from '@mui/icons-material/BathtubOutlined';
+import BathtubOutlinedIcon from "@mui/icons-material/BathtubOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import ViewTimelineOutlinedIcon from '@mui/icons-material/ViewTimelineOutlined';
+import ViewTimelineOutlinedIcon from "@mui/icons-material/ViewTimelineOutlined";
 import Divider from "@mui/material/Divider";
 const LeftContent = () => {
   const items = [
-    { icon: <HotelOutlinedIcon sx={{fontSize:"21px"}}/>, text: "2" },
-    { icon: <BathtubOutlinedIcon sx={{fontSize:"21px"}}/>, text: "2" },
-    { icon: <HomeOutlinedIcon sx={{fontSize:"21px"}}/>, text: "2BHK" },
-    {icon: <ViewTimelineOutlinedIcon sx={{fontSize:"21px"}}/>, text: "2000 Sq.Ft"},
-
+    { icon: <HotelOutlinedIcon sx={{ fontSize: "21px" }} />, text: "2" },
+    { icon: <BathtubOutlinedIcon sx={{ fontSize: "21px" }} />, text: "2" },
+    { icon: <HomeOutlinedIcon sx={{ fontSize: "21px" }} />, text: "2BHK" },
+    {
+      icon: <ViewTimelineOutlinedIcon sx={{ fontSize: "21px" }} />,
+      text: "2000 Sq.Ft",
+    },
   ];
 
   return (
@@ -87,7 +88,7 @@ const LeftContent = () => {
                 component="img"
                 alt="Property Image 4"
                 height="70"
-                image="https://plus.unsplash.com/premium_photo-1661883964999-c1bcb57a7357?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGhvdXNlfGVufDB8fDB8fHww"
+                image="https://images.unsplash.com/photo-1444676632488-26a136c45b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlfGVufDB8fDB8fHww"
                 sx={{ borderRadius: 1 }}
               />
             </Grid2>
@@ -95,8 +96,14 @@ const LeftContent = () => {
         </Box>
       </Box>
       <CardContent sx={{ padding: 1 }}>
-        <Box display={"flex"} sx={{ mt: "-1.5rem",flexDirection:"row",alignItems:"center" }}>
-          <Typography color="black" sx={{ fontWeight: "600",mt:"10px",fontSize:"19px" }}>
+        <Box
+          display={"flex"}
+          sx={{ mt: "-1.5rem", flexDirection: "row", alignItems: "center" }}
+        >
+          <Typography
+            color="black"
+            sx={{ fontWeight: "600", mt: "10px", fontSize: "19px" }}
+          >
             Jumeirah Estate
           </Typography>
           <Typography
@@ -108,32 +115,59 @@ const LeftContent = () => {
               height: "0.9rem",
               fontSize: "0.6rem",
               mt: 1,
-              borderRadius:"4px",
-              fontSize:"11px",
+              borderRadius: "4px",
+              fontSize: "11px",
             }}
           >
             UNIT-1458
           </Typography>
         </Box>
-        <Typography color="text.secondary" sx={{fontSize:"16px",mt:"10px"}}>
+        <Typography
+          color="text.secondary"
+          sx={{ fontSize: "16px", mt: "10px" }}
+        >
           Rubix Apartment, K Tower, Floor 1
         </Typography>
         <Box display="flex" mb="-30px" alignItems="center">
-                  {items.map((item, index) => (
-                    <Box key={index} display="flex" alignItems="center" color="#98A0AC" mt={2}>
-                      {item.icon}
-                      <Typography sx={{color:"black",ml: "10px",fontSize:"16px",mt:"5px",fontWeight:"600" }}>{item.text}</Typography>
-                      {index !== items.length - 1 && (
-                        <Typography sx={{ color: "#98A0AC", fontSize: "20px", mb: "5px", ml: "10px", mr: "10px"  }}>
-                          {"\u2022"}
-                        </Typography>
-                      )}
-                    </Box>
-                  ))}
-                </Box>
+          {items.map((item, index) => (
+            <Box
+              key={index}
+              display="flex"
+              alignItems="center"
+              color="#e6e5e3"
+              mt={2}
+            >
+              {item.icon}
+              <Typography
+                sx={{
+                  color: "black",
+                  ml: "10px",
+                  fontSize: "14px",
+                  mt: "5px",
+                  fontWeight: "600",
+                }}
+              >
+                {item.text}
+              </Typography>
+              {index !== items.length - 1 && (
+                <Typography
+                  sx={{
+                    color: "#98A0AC",
+                    fontSize: "20px",
+                    mb: "-1px",
+                    ml: "10px",
+                    mr: "10px",
+                  }}
+                >
+                  {"\u2022"}
+                </Typography>
+              )}
+            </Box>
+          ))}
+        </Box>
       </CardContent>
-      <Divider sx={{width:"100%", color:"gray",mt:"30px"}} />
-                
+      <Divider sx={{ width: "100%", color: "gray", mt: "30px" }} />
+
       <Box
         mt={1}
         display="flex"

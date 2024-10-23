@@ -7,6 +7,7 @@ import {
   Typography,
   Box,
   Divider,
+  IconButton,
 } from "@mui/material";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -137,20 +138,20 @@ const PricingPopup = ({ open, onClose }) => {
               flexDirection="row"
               justifyContent="space-between"
             >
-              <Button
+              <IconButton
                 sx={{
-                  borderRadius: "50px 50px",
+                  
                   color: item.color,
                   "&:hover": { backgroundColor: `${item.color}33` },
                 }}
               >
                 {item.icon2}
-              </Button>
-              <Button sx={{ color: "black", borderRadius: "50px 50px" }}>
+              </IconButton>
+              <IconButton sx={{ color: "black",  }}>
                 {React.cloneElement(item.icon1, {
                   sx: { fontSize: "17px" },
                 })}
-              </Button>
+              </IconButton>
             </Box>
           </Box>
         </Button>

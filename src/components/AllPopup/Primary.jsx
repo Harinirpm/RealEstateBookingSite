@@ -9,19 +9,11 @@ import {
 } from "@mui/material";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   TextField,
-  ToggleButtonGroup,
-  ToggleButton,
   InputAdornment,
-  MenuItem,
   LinearProgress,
-  Tooltip,
 } from "@mui/material";
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import OutlinedInput from '@mui/material/OutlinedInput';
 
 import { linearProgressClasses } from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
@@ -29,13 +21,14 @@ import Dropdown from "../Dropdown/Dropdown";
 
 const Primary = ({ onClose }) => {
   const [activeButton, setActiveButton] = useState(null);
-  const [componentBasedOn, setComponentBasedOn] = useState("Amount");
-  const handleRevenueChange = (event, newType) => setRevenueType(newType);
-  const handleComponentBasedChange = (event, newValue) =>
-    setComponentBasedOn(newValue);
+  const [componentBasedOn, setComponentBasedOn] = useState(null);
+  
+  const handleComponentBasedChange = (value) => setComponentBasedOn(value);
+
   const handleClick = (buttonId) => {
     setActiveButton(buttonId);
   };
+
   const BorderLinearProgress = styled(LinearProgress)(({ theme, color }) => ({
     height: 5,
     borderRadius: 5,
@@ -185,7 +178,7 @@ const Primary = ({ onClose }) => {
             </Box>
           </Box>
          
-          <Box sx={{ display: "flex", flex: 2 ,flexDirection:"row",alignItems:"center"}}>
+          <Box sx={{ display: "flex", flex: 2 ,flexDirection:"row",alignItems:"center",mt:"1rem"}}>
             <Box sx={{ marginBottom: "0rem", width: "50%" }}>
               <Typography
                 variant="body2"
@@ -197,7 +190,7 @@ const Primary = ({ onClose }) => {
               <Dropdown options={options2} placeholder="GST"/>
             </Box>
 
-            <Box sx={{ marginBottom: "0rem", ml: "0rem", display:"flex",flexDirection:"column",}}>
+            <Box sx={{ marginBottom: "0rem", ml: "0rem", display:"flex",flexDirection:"column",mt:"10px"}}>
               <Typography
                 variant="body2"
                 sx={{ marginBottom: "0rem", fontWeight: 500 }}
@@ -219,10 +212,12 @@ const Primary = ({ onClose }) => {
                   padding: "15px",
                   borderRadius: "5px",
                   textTransform: "none",
-                  color: activeButton === "amount" ? "white" : "black",
-                  backgroundColor: activeButton === "amount" ? "#5078E1" : "",
-                }}
-                onClick={() => handleClick("amount")}
+                 color: componentBasedOn === "amount" ? "white" : "black",
+                      backgroundColor:
+                        componentBasedOn === "amount" ? "#5078E1" : "",
+                      flexBasis: "100%",
+                    }}
+                    onClick={() => handleComponentBasedChange("amount")}
                 value="Amount">
                   Amount
                   </Button>
@@ -240,17 +235,20 @@ const Primary = ({ onClose }) => {
                   padding: "15px",
                   borderRadius: "5px",
                   textTransform: "none",
-                  color: activeButton === "uom" ? "white" : "black",
-                  backgroundColor: activeButton === "uom" ? "#5078E1" : "",
-                }} 
+                  color: componentBasedOn === "uom" ? "white" : "black",
+                  backgroundColor:
+                    componentBasedOn === "uom" ? "#5078E1" : "",
+                  flexBasis: "100%",
+                }}
+                onClick={() => handleComponentBasedChange("uom")}
                 value="UOM"
-                onClick={() => handleClick("uom")}>
+                >
                   UOM
                 </Button>
               </Box>
             </Box>
           </Box>
-          <Box sx={{ alignItems: "center", marginBottom: "2rem" }}>
+          <Box sx={{ alignItems: "center", marginBottom: "2rem",mt:"1rem" }}>
             <Typography
               variant="body2"
               sx={{ flexGrow: 1, fontWeight: 500, mb: "4px" }}
@@ -263,8 +261,6 @@ const Primary = ({ onClose }) => {
                 display: "flex",
                 alignItems: "center",
                 marginBottom: "2rem",
-                // width: "10rem",
-               
                 flex: 1,
               }}
             >
@@ -273,20 +269,20 @@ const Primary = ({ onClose }) => {
                 size="small"
                 width="40rem"
                 fullWidth
-                placeholder="$200"
-               
+                // value="200"
+                placeholder="200"
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       <Typography variant="body2" sx={{ marginLeft: "0.5rem" }}>
-                        SAR / Total
+                        $/Monthly
                       </Typography>
                     </InputAdornment>
                   ),
                 }}
                 sx={{
                   width: "100%",
-                  backgroundColor: "#f9f9f9",
+                  backgroundColor: "white",
                   borderRadius: "8px",
                   '& .MuiInputBase-input': {
                     fontWeight: 600, 
@@ -294,6 +290,8 @@ const Primary = ({ onClose }) => {
                 }}
               />
             </Box>
+          </Box>
+
             <Box
               sx={{
                 display: "flex",
@@ -437,7 +435,7 @@ const Primary = ({ onClose }) => {
                 </Typography>
               </Box>
             </Box>
-          </Box>
+          
           <Box
             display="flex"
             flexDirection="row"

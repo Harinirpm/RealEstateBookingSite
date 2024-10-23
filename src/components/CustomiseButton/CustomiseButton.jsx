@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Box, MenuItem, Popover, Divider, Button } from "@mui/material";
 import PricingPopup from "../PricingPopup/PricingPopup";
-import DialogBox from "../CustomDialogBox/DialogBox";
+import AddAmenities from "../AllPopup/AddAmenities";
+import AddUtilities from "../AllPopup/AddUtilities";
+import AddDiscount from "../AllPopup/AddDiscount";
+import RemoveComponent from "../AllPopup/RemoveComponent";
 
 const PricingMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -33,7 +36,9 @@ const PricingMenu = () => {
         transition: "filter 0.3s ease-in-out",
       }}
     >
-      <Button onClick={handlePopoverOpen} sx={{textTransform:"none"}}>+ Customise</Button>
+      <Button onClick={handlePopoverOpen} sx={{textTransform:"none"}}>
+        + Customise
+        </Button>
       <Popover
         open={open}
         anchorEl={anchorEl}
@@ -75,7 +80,16 @@ const PricingMenu = () => {
         <PricingPopup open={Boolean(popupContent)} onClose={handleClose} />
       )}
       {popupContent === "AddAmenities" && (
-        <DialogBox open={Boolean(popupContent)} onClose={handleClose} />
+        <AddAmenities open={Boolean(popupContent)} onClose={handleClose} />
+      )}
+      {popupContent === "AddUtilities" && (
+        <AddUtilities open={Boolean(popupContent)} onClose={handleClose} />
+      )}
+      {popupContent === "AddDiscount" && (
+        <AddDiscount open={Boolean(popupContent)} onClose={handleClose} />
+      )}
+      {popupContent === "RemoveComponent" && (
+        <RemoveComponent open={Boolean(popupContent)} onClose={handleClose} />
       )}
     </Box>
   );

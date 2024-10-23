@@ -13,15 +13,9 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   TextField,
-  ToggleButtonGroup,
-  ToggleButton,
   InputAdornment,
-  MenuItem,
-  LinearProgress,
-  Tooltip,
+  
 } from "@mui/material";
-import { linearProgressClasses } from "@mui/material/LinearProgress";
-import { styled } from "@mui/material/styles";
 import Dropdown from "../Dropdown/Dropdown";
 
 const Secondary = ({ onClose }) => {
@@ -152,7 +146,7 @@ const Secondary = ({ onClose }) => {
             <Box sx={{ marginBottom: "1.5rem", width: "50%" }}>
               <Typography
                 variant="body2"
-                sx={{ marginBottom: "0.5rem", fontWeight: 500 }}
+                sx={{ marginBottom: "0.7rem", fontWeight: 500 }}
               >
                 Tax Group For Pricing Component
               </Typography>

@@ -10,6 +10,7 @@ function LeadDetails() {
       >
         Lead Details
       </Typography>
+
       <Box
         sx={{
           height: "80px",
@@ -65,7 +66,7 @@ function LeadDetails() {
             >
               +91 9090808012
             </Typography>
-            <Typography sx={{ mx: "10px", color: "#4E5A6B", fontSize: "20px" }}>
+            <Typography sx={{ mx: "10px", color: "#bdbdbd", fontSize: "20px" }}>
               •
             </Typography>
             <Typography
@@ -181,7 +182,7 @@ function LeadDetails() {
             sx={{
               fontSize: "18px",
               color: "#98A0AC",
-              ml: "10px",
+              // ml: "10px",
               mt: "10px",
               fontFamily: "Nunito Sans",
             }}
