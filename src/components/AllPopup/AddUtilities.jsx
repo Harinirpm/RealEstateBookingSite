@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Box } from "@mui/material";
+import { Button, Box, DialogActions } from "@mui/material";
 import {
   Dialog,
   DialogTitle,
@@ -13,6 +13,7 @@ import AssistantOutlinedIcon from '@mui/icons-material/AssistantOutlined';
 import Avatar from "@mui/material/Avatar";
 import Avatar3 from "../../assets/avatar3.jpeg";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 
@@ -77,11 +78,16 @@ const IOSSwitch = styled((props) => (
 }));
 
 const AddUtilities = ({ onClose }) => {
-  const [switchStates, setSwitchStates] = useState(Array(10).fill(false));
 
+  const [switchStates, setSwitchStates] = useState(Array(10).fill(false));
+  const [totalValue, setTotalValue] = useState(0);
+  
   const handleSwitchChange = (index) => {
-    setSwitchStates((prevStates) =>
-      prevStates.map((state, i) => (i === index ? !state : state))
+    const isCurrentlySelected = switchStates[index];
+    const updateValue = isCurrentlySelected ? totalValue - 20 : totalValue + 20;
+    setTotalValue(updateValue);
+    setSwitchStates((prevStates) => 
+      prevStates.map((state,i) => i === index ? !state : state)
     );
   };
 
@@ -163,7 +169,7 @@ const AddUtilities = ({ onClose }) => {
             flexDirection="row"
             justifyContent="space-between"
           >
-            <DialogTitle sx={{ fontWeight: "600", fontSize: "18px" }}>
+            <DialogTitle sx={{ fontWeight: "600", fontSize: "16px" }}>
               Add Utility
             </DialogTitle>
             <ClearOutlinedIcon
@@ -181,6 +187,7 @@ const AddUtilities = ({ onClose }) => {
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
+            alignItems="center"
             backgroundColor="#DBF0F180"
             sx={{
               height: "10%",
@@ -192,38 +199,47 @@ const AddUtilities = ({ onClose }) => {
               ml: "20px",
             }}
           >
-            <Box
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-              sx={{
-                position: "sticky",
-                // top: 5,
-                zIndex: 1,
-              }}
-            ></Box>
-            <Box display="flex" flexDirection="row">
-              <AssistantOutlinedIcon sx={{ color: "#6DAFB3",fontSize:"28px" }} />
+            
+            <Box display="flex" flexDirection="row" alignItems="center">
+              <AutoAwesomeIcon sx={{ color: "#6DAFB3",
+                fontSize:"30px",
+                // ml:"-30px",
+                height:"15px",
+                width:"15px",
+                border:"3px solid #6DAFB3",
+                padding:"5px",
+                borderRadius:"5px"
+                 }} />
               <Typography
                 color="#6DAFB3"
                 sx={{
                   fontSize: "16px",
                   fontWeight: "600",
-                  ml: "10px",
+                  ml: "15px",
                   whiteSpace: "nowrap",
                 }}
               >
-                05 Total Utility
+                05
+              </Typography>
+              <Typography
+                color="#6DAFB3"
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  ml: "5px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Total Utility
               </Typography>
             </Box>
 
             <Box display="flex" ml={14}>
               <Typography
                 color="#6DAFB3"
-                sx={{ fontSize: "16px", fontWeight: "600" }}
+                sx={{ fontSize: "16px", fontWeight: "600",flexBasis:"50%",whiteSpace:"nowrap" }}
               >
-                $ 200.00
+               $ {totalValue.toFixed(2)}
               </Typography>
             </Box>
           </Box>
@@ -247,6 +263,7 @@ const AddUtilities = ({ onClose }) => {
                 mt: "-10px",
                 zIndex: 1000,
                 ml: "20px",
+                color:"#98A0AC",
               }}
             >
               Available Utility
@@ -320,7 +337,7 @@ const AddUtilities = ({ onClose }) => {
                     <Box display="flex" alignItems="center" sx={{ mt: "2px" }}>
                       <Typography
                         sx={{
-                          color: "black",
+                          color: "#4E5A6B",
                           fontSize: "14px",
                           fontFamily: "Nunito Sans",
                           // mr:"-5px",
@@ -332,17 +349,17 @@ const AddUtilities = ({ onClose }) => {
                       <Typography
                         sx={{
                           mx: "10px",
-                          color: "#bdbdbd",
+                          color: "#E4E8EE",
                           fontSize: "20px",
                           mb: "3px",
-                          mr: "3px",
+                          mr: "7px",
                         }}
                       >
                         •
                       </Typography>
                       <Typography
                         sx={{
-                          color: "black",
+                          color: "#4E5A6B",
                           fontSize: "14px",
                           fontFamily: "Nunito Sans",
                           whiteSpace: "nowrap",
@@ -367,51 +384,27 @@ const AddUtilities = ({ onClose }) => {
                   />
                 </Box>
               </Box>
-{/* 
-              <Box
-                sx={{
-                  display: switchStates[index] ? "flex" : "none",
-                  flexDirection: switchStates[index] ? "column" : "none",
-                  transition: "all 0.3s ease",
-                  width: "100%",
-                }}
-              >
-                <Divider sx={{ width: "100%", my: 1 }} />
-                <FormControl sx={{ ml: "20px" }}>
-                  <FormControlLabel
-                    value="applicability"
-                    control={<Radio />}
-                    label="Free applicability"
-                  />
-                </FormControl>
-              </Box> */}
             </Box>
           ))}
-
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "20px",
-              backgroundColor: "white",
-              position: "fixed",
-              bottom: 32,
-              width:"21%",
-              zIndex: 1,
-            }}
-          >
-            <Button
-              variant="contained"
-              onClick={onClose}
-              sx={{ mt: "10px", textTransform: "none", height: "45px",width:"100%",padding:"10px" }}
-            >
-              update
-            </Button>
-          </Box>
         </DialogContent>
+        <DialogActions
+        sx={{
+          padding: "16px 24px",
+          backgroundColor: "white",
+        }}
+      >
+        <Button
+          variant="contained"
+          onClick={onClose}
+          sx={{
+            textTransform: "none",
+            width: "100%",
+            padding: "10px",
+          }}
+        >
+          Update
+        </Button>
+      </DialogActions>
       </Dialog>
     </Box>
   );

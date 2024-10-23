@@ -51,7 +51,7 @@ const DialogBox = ({ open, onClose, selectedLand }) => {
       >
         <DialogTitle sx={{ fontWeight: "600" }}>Unit Details</DialogTitle>
         <ClearOutlinedIcon
-          sx={{ fontSize: "27px", padding: "15px", cursor: "pointer" }}
+          sx={{ fontSize: "27px", padding: "15px", cursor: "pointer",color:"#7C8594" }}
           onClick={onClose}
         />
       </Box>
@@ -69,9 +69,9 @@ const DialogBox = ({ open, onClose, selectedLand }) => {
             <Grid2 item xs={12} sm={4} flex={2}>
               <Box
                 p={2}
-                border="1px solid #e0e0e0"
+                // border="1px solid #e0e0e0"
                 borderRadius="8px"
-                sx={{ backgroundColor: "#F5F7FA" }}
+                sx={{ backgroundColor: "#F8F9FB" }}
               >
                 <Typography sx={{ fontWeight: "600", mb: "20px" }}>
                   UNIT PRICING DETAILS
@@ -114,7 +114,7 @@ const DialogBox = ({ open, onClose, selectedLand }) => {
                 <Box
                   display="flex"
                   justifyContent="space-between"
-                  mt={15}
+                  mt={22}
                   sx={{
                     backgroundColor: "#E4E8EE",
                     alignItems: "center",

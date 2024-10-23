@@ -4,6 +4,7 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
 
 
 function handleClick(event) {
@@ -91,8 +92,28 @@ function BreadCrumbs() {
         alignItems: "center",
       }}
     >
-      <Box sx={{height:"25px",width:"25px",border:"1px solid blue",borderRadius:'50px',mr:"20px" }}>
-      <Badge badgeContent={4} color="primary" sx={{ mr: "20px",position:"absolute",right:"682px",top:"197px"}} /> </Box>Preview and
+      <Box sx={{height:"30px",width:"30px",border:"1px solid #5078E1",
+      borderRadius:'50px',
+      mr:"20px",
+        boxShadow:"1px 0px 4px 0px"
+        
+         }}>
+      <Typography sx={{backgroundColor:"#5078E1",
+      borderRadius:"50%",
+      height:"15px",
+      width:"15px",
+        color:"white",
+        alignItems:"center",
+        textAlign:"center",
+        justifyContent:"center",
+        padding:"5px",
+        pb:"7px",
+        pt:"2px",
+        mt:"3px",
+        ml:"2px",
+        boxShadow:"1px 0px 4px 0px"
+        }}>4</Typography>
+       </Box>Preview and
       Create
     </Link>,
   ];

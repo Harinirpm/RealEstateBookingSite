@@ -60,7 +60,7 @@ const Secondary = ({ onClose }) => {
             
           }}
         >
-          <DialogTitle sx={{ fontWeight: "600",fontSize:"18px" }}>Pricing Table</DialogTitle>
+          <DialogTitle sx={{ fontWeight: "600",fontSize:"16px" }}>Pricing Table</DialogTitle>
           <ClearOutlinedIcon
             sx={{
               fontSize: "27px",
@@ -109,7 +109,7 @@ const Secondary = ({ onClose }) => {
                   margin: 0,
                   boxShadow: "none",
                   border: "1px solid #bdbfbe",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   fontSize: "16px",
                   height: "46px",
                   mr: "10px",
@@ -226,7 +226,7 @@ const Secondary = ({ onClose }) => {
                       margin: 0,
                       boxShadow: "none",
                       border: "1px solid #bdbfbe",
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: "16px",
                       width: "90%",
                       height: "46px",
@@ -248,7 +248,7 @@ const Secondary = ({ onClose }) => {
                       margin: 0,
                       boxShadow: "none",
                       border: "1px solid #bdbfbe",
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: "16px",
                       width: "90%",
                       height: "46px",
@@ -286,7 +286,7 @@ const Secondary = ({ onClose }) => {
                       margin: 0,
                       boxShadow: "none",
                       border: "1px solid #bdbfbe",
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: "16px",
                       width: "90%",
                       height: "46px",
@@ -308,7 +308,7 @@ const Secondary = ({ onClose }) => {
                       margin: 0,
                       boxShadow: "none",
                       border: "1px solid #bdbfbe",
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: "16px",
                       width: "90%",
                       height: "46px",
@@ -331,7 +331,7 @@ const Secondary = ({ onClose }) => {
                       margin: 0,
                       boxShadow: "none",
                       border: "1px solid #bdbfbe",
-                      fontWeight: 600,
+                      fontWeight: 500,
                       fontSize: "16px",
                       width: "90%",
                       height: "46px",

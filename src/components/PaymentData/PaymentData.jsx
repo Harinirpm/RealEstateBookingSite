@@ -1,7 +1,15 @@
 import React from 'react';
 import { Box, Typography, Divider } from "@mui/material";
+import { useEffect } from 'react';
+function PaymentData({ items = [], updateGrandTotal}) {
+  useEffect(() => {
+    const grandTotal = items.reduce((total, item) => {
+      const valueAsNumber = parseFloat(item.value.replace(/[^0-9.-]/g, ""));
+      return total + valueAsNumber;
+    }, 0);
+    updateGrandTotal(grandTotal);
+  }, [items, updateGrandTotal]);
 
-function PaymentData({ items = [], totals = [] }) {
   return (
     <Box>
       <Box sx={{ marginBottom: "10px" }}>

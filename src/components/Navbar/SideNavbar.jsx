@@ -21,6 +21,7 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ReceiptLongIcon from "@mui/icons-material/ReceiptLong";
 import FolderCopyIcon from "@mui/icons-material/FolderCopy";
 import { Link, useLocation } from "react-router-dom";
+import { Divider } from "@mui/material";
 
 const drawerWidth = 340;
 
@@ -153,21 +154,22 @@ function SideNavbar() {
             )}
           </DrawerHeader>
 
-          <DrawerHeader sx={{ mr: "-17%" }}>
-            {!open && (
-              <IconButton onClick={handleDrawerOpen} mr="90px">
-                <ChevronRightIcon
-                  sx={{
-                    color: "white",
-                    height: "30px",
-                    width: "100%",
-                    borderRadius: "50% 50%",
-                    backgroundColor: "blue",
-                  }}
-                />
-              </IconButton>
-            )}
-          </DrawerHeader>
+          <DrawerHeader sx={{ mr: "-17%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+  {!open && (
+    <IconButton onClick={handleDrawerOpen} sx={{ marginBottom: "10px" }}>
+      <ChevronRightIcon
+        sx={{
+          color: "white",
+          height: "30px",
+          width: "100%",
+          borderRadius: "50%",
+          backgroundColor: "blue",
+        }}
+      />
+    </IconButton>
+  )}
+  <Divider sx={{ width: "100%", border: "1px solid gray" }} />
+</DrawerHeader>
         </Box>
         <List
           sx={{
