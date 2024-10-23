@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../../components/Header/Header";
 import QuotationDetails from "../../components/QuotationDetails/QuotationDetails";
 import Box from "@mui/material/Box";
-import Buttons from "../../components/Button/Buttons";
+import Button from "../../components/Button/Button";
 
 function Companies() {
   return (
@@ -18,10 +18,11 @@ function Companies() {
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
+          // gap={100}
           sx={{ height: "90px", width: "95.4%", padding: "0 20px" }}
         >
           <Box display="flex" flexDirection="row" padding="5px">
-            <Buttons
+            <Button
               text="Previous"
               bgcolor="white"
               textcolor="black"
@@ -43,7 +44,7 @@ function Companies() {
             flexDirection="row"
             sx={{ height: "80px", width: "100%", ml: "65%" }}
           >
-            <Buttons
+            <Button
               text="cancel"
               bgcolor="white"
               textcolor="black"
@@ -59,7 +60,7 @@ function Companies() {
                 fontSize: "16px",
               }}
             />
-            <Buttons
+            <Button
               text="Crate Quotation"
               bgcolor="#5078E1"
               textcolor="white"

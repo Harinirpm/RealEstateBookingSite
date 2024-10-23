@@ -43,11 +43,10 @@ function PaymentData({ items = [], totals = [] }) {
               }}
             >
               <Typography
-                variant="h6"
                 sx={{
                   color: "#696969",
-                  fontWeight: "600",
-                  fontSize: "17px",
+                  fontWeight: "500",
+                  fontSize: "15px",
                   letterSpacing: "0.9px",
                   mt: "8px",
                   flexBasis: "40%",
@@ -60,11 +59,11 @@ function PaymentData({ items = [], totals = [] }) {
                 sx={{
                   color: "#696969",
                   fontWeight: "400",
-                  fontSize: "17px",
+                  fontSize: "15px",
                   letterSpacing: "0.9px",
                   mt: "8px",
                   flexBasis: "15%",
-                  textAlign: "center"
+                  textAlign: "center",
                 }}
               >
                 {item.quantity}
@@ -73,13 +72,19 @@ function PaymentData({ items = [], totals = [] }) {
                 variant="h6"
                 fontWeight="500"
                 sx={{
-                  fontSize: "17px",
+                  fontSize: "15px",
                   letterSpacing: "0.9px",
                   marginRight: "20px",
                   mt: "8px",
                   flexBasis: "22%",
-                  textAlign: "right"
-                }}
+                  textAlign: "right",
+                  fontWeight: item.value === "- $ 100.00" 
+                      ? "400" 
+                      : item.value.includes("$") || 
+                        ["3000", "0", "648"].includes(item.value.replace(/[^0-9]/g, '')) 
+                      ? "600" 
+                      : "200", 
+                  }}
               >
                 {item.value}
               </Typography>
