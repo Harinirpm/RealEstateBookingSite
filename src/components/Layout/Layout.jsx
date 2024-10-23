@@ -5,8 +5,9 @@ import TopNavbar from "../Navbar/TopNavbar";
 import useWindowDimensions from "../useWindowDiamention/UseWindowDiamention";
 function Layout() {
   const { height, width } = useWindowDimensions();
-  const topNavbarHeight = 60; 
-  const sideNavbarWidth = 80;
+  // const topNavbarHeight = 60; 
+  // const sideNavbarWidth = 80;
+  
   return (
     <>
       <div
@@ -14,7 +15,7 @@ function Layout() {
           // maxWidth: "100vw",
           //  maxHeight: "100vh",
             overflow: "hidden",
-            width: width * 0.98,
+            width: width * 0.994,
           height: height * 0.98,
            }}
       >

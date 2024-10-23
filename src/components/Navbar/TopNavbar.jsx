@@ -175,14 +175,14 @@ function TopNavbar() {
             component="div"
             sx={{
               display: { xs: 'none', sm: 'block' },
-              fontSize: { xs: '10px', sm: '14px', md: '16px' }, 
+              fontSize: { xs: '8px', sm: '12px', md: '14px' }, 
               textTransform: 'none',
               flexGrow: 1,
             }}
           >
             PROPERTY MANAGEMENT SOLUTION
           </Typography>
-          <Search>
+          <Search sx={{backgroundColor:"#5D5D5D"}}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>

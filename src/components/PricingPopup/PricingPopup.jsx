@@ -81,9 +81,9 @@ const PricingPopup = ({ open, onClose }) => {
           justifyContent: "space-between",
         }}
       >
-        <DialogTitle sx={{ fontWeight: "600" }}>Pricing Table</DialogTitle>
+        <DialogTitle sx={{ fontWeight: "600",fontSize:"16px" }}>Pricing Table</DialogTitle>
         <ClearOutlinedIcon
-          sx={{ fontSize: "27px", padding: "15px", cursor: "pointer" }}
+          sx={{ fontSize: "27px", padding: "15px", cursor: "pointer",color:"#7C8594" }}
           onClick={onClose}
         />
       </Box>
@@ -120,16 +120,21 @@ const PricingPopup = ({ open, onClose }) => {
               alignItems="center"
             >
               <Badge
-                badgeContent={index + 1}
+                badgeContent={"0"+(index+1)}
                 sx={{
+                  fontSize:"10px",
                   mr: "20px",
+                  ml:"10px",
                   "& .MuiBadge-badge": {
                     backgroundColor: item.color,
                     color: "white",
+                    height:"18px",
+                    width:"14px",
+                    borderRadius:"50px"
                   },
                 }}
               />
-              <Typography color={item.color} sx={{ fontSize: "20px" }}>
+              <Typography color={item.color} sx={{ fontSize: "14px",mt:"4px" }}>
                 {item.text}
               </Typography>
             </Box>
@@ -140,16 +145,16 @@ const PricingPopup = ({ open, onClose }) => {
             >
               <IconButton
                 sx={{
-                  
-                  color: item.color,
+                  color: "#CED3DD",
+                  fontSize:"14px",
                   "&:hover": { backgroundColor: `${item.color}33` },
                 }}
               >
                 {item.icon2}
               </IconButton>
-              <IconButton sx={{ color: "black",  }}>
+              <IconButton sx={{ color: item.color,  }}>
                 {React.cloneElement(item.icon1, {
-                  sx: { fontSize: "17px" },
+                  sx: { fontSize:"17px"},
                 })}
               </IconButton>
             </Box>

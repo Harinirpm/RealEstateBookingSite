@@ -92,10 +92,12 @@ function UnitDetails() {
           <Card
             key={land.id}
             sx={{
-              maxWidth: 390,
+              // maxWidth: 390,
+              // width:"92%",
               borderRadius: "8px",
               boxShadow: "none",
               border: "1px solid #e1e3e6",
+              
             }}
           >
             <Button
@@ -112,18 +114,17 @@ function UnitDetails() {
               <CardMedia
                 sx={{
                   height: 150,
-                  width: 220,
-                  ml: "3px",
-                  mt: "5px",
-                  mr: "20px",
+                  width: 228,
+                  padding:"0px",
                   borderRadius: "8px",
                   position: "relative",
+                  mt:"3px",
                   cursor:"pointer"
                 }}
-                image={RoomImg}
                 onClick={() => handleClickOpen(land)} 
+                image={RoomImg}
                 title="room"
-              >
+                >
                 <Box
                   sx={{
                     height: "30px",

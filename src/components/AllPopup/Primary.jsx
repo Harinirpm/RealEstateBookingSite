@@ -65,7 +65,7 @@ const Primary = ({ onClose }) => {
             justifyContent: "space-between",
           }}
         >
-          <DialogTitle sx={{ fontWeight: "600" }}>Pricing Table</DialogTitle>
+          <DialogTitle sx={{ fontWeight: "600",fontSize:"16px" }}>Pricing Table</DialogTitle>
           <ClearOutlinedIcon
             sx={{
               fontSize: "27px",
@@ -109,7 +109,7 @@ const Primary = ({ onClose }) => {
                   margin: 0,
                   boxShadow: "none",
                   border: "1px solid #bdbfbe",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   fontSize: "16px",
                   width: "90%",
                   height: "46px",
@@ -131,7 +131,7 @@ const Primary = ({ onClose }) => {
                   margin: 0,
                   boxShadow: "none",
                   border: "1px solid #bdbfbe",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   fontSize: "16px",
                   width: "90%",
                   height: "46px",
@@ -153,7 +153,7 @@ const Primary = ({ onClose }) => {
                   margin: 0,
                   boxShadow: "none",
                   border: "1px solid #bdbfbe",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   fontSize: "16px",
                   width: "90%",
                   height: "46px",
@@ -202,7 +202,7 @@ const Primary = ({ onClose }) => {
                   margin: 0,
                   boxShadow: "none",
                   border: "1px solid #bdbfbe",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   fontSize: "16px",
                   width: "90%",
                   height: "46px",
@@ -225,7 +225,7 @@ const Primary = ({ onClose }) => {
                   margin: 0,
                   boxShadow: "none",
                   border: "1px solid #bdbfbe",
-                  fontWeight: 600,
+                  fontWeight: 500,
                   fontSize: "16px",
                   width: "90%",
                   height: "46px",
@@ -321,8 +321,17 @@ const Primary = ({ onClose }) => {
                 </Box>
                 <TextField
                   // value="$ 190"
-                  placeholder="$190"
+                  placeholder="190"
                   size="small"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Typography variant="body2" sx={{ marginLeft: "0.5rem",color:"black",fontWeight: 600, }}>
+                          $
+                        </Typography>
+                      </InputAdornment>
+                    ),
+                  }}
                   sx={{
                     marginTop: "0.5rem",
                     backgroundColor: "#fff",
@@ -330,6 +339,8 @@ const Primary = ({ onClose }) => {
                     '& .MuiInputBase-input': {
                     fontWeight: 600, 
                   },
+                  
+                  
                   }}
                 />
                 <Typography
@@ -365,8 +376,17 @@ const Primary = ({ onClose }) => {
 
                 <TextField
                   // value="$ 120"
-                  placeholder="$100"
+                  placeholder="100"
                   size="small"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Typography variant="body2" sx={{ marginLeft: "0.5rem",color:"black",fontWeight: 600, }}>
+                          $
+                        </Typography>
+                      </InputAdornment>
+                    ),
+                  }}
                   sx={{
                     marginTop: "0.5rem",
                     backgroundColor: "#fff",
@@ -410,9 +430,17 @@ const Primary = ({ onClose }) => {
 
                 <TextField
                   // value="$ 100"
-                  placeholder="$100"
-
+                  placeholder="100"
                   size="small"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Typography variant="body2" sx={{ marginLeft: "0.5rem",color:"black",fontWeight: 600, }}>
+                          $
+                        </Typography>
+                      </InputAdornment>
+                    ),
+                  }}
                   sx={{
                     marginTop: "0.5rem",
                     backgroundColor: "#fff",

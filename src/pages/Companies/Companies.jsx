@@ -7,7 +7,7 @@ import Button from "../../components/Button/Button";
 function Companies() {
   return (
 
-    <div style={{backgroundColor:"#F5F7FA"}}>
+    <div style={{backgroundColor:"#F5F7FA",}}>
       <Header />
       <Box sx={{ mt: "2%", ml: "2%" }}>
         <QuotationDetails />
@@ -18,7 +18,6 @@ function Companies() {
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
-          // gap={100}
           sx={{ height: "90px", width: "95.4%", padding: "0 20px" }}
         >
           <Box display="flex" flexDirection="row" padding="5px">
@@ -26,7 +25,7 @@ function Companies() {
               text="Previous"
               bgcolor="white"
               textcolor="black"
-              // onClick={handleClick}
+              
               sx={{
                 margin: 2,
                 boxShadow: "none",
@@ -45,10 +44,10 @@ function Companies() {
             sx={{ height: "80px", width: "100%", ml: "65%" }}
           >
             <Button
-              text="cancel"
+              text="Cancel"
               bgcolor="white"
               textcolor="black"
-              // onClick={handleClick}
+              
               sx={{
                 margin: 2,
                 boxShadow: "none",
@@ -64,7 +63,6 @@ function Companies() {
               text="Crate Quotation"
               bgcolor="#5078E1"
               textcolor="white"
-              // onClick={handleClick}
               sx={{
                 margin: 2,
                 boxShadow: "none",

@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
 import Avatar from "@mui/material/Avatar";
 import Avatar1 from "../../assets/avatar1.png";
@@ -14,12 +14,12 @@ function LeadDetails() {
       <Box
         sx={{
           height: "80px",
-          width: "96%",
+          width: "99%",
           backgroundColor: "white",
           border: "1px solid #E4E8EE",
           borderRadius: "10px",
           display: "flex",
-          padding: "8px",
+          padding: "1px",
           alignItems: "center",
           mt: "20px",
         }}
@@ -81,11 +81,12 @@ function LeadDetails() {
           </Box>
         </Box>
       </Box>
+      <Divider sx={{width:"100%",mt:"20px"}} />
       <Typography
         sx={{
           fontWeight: 640,
           fontSize: "20px",
-          mt: "30px",
+          mt: "20px",
           fontFamily: "Nunito Sans",
         }}
       >
@@ -109,7 +110,7 @@ function LeadDetails() {
           </Typography>
           <Typography
             sx={{
-              fontSize: "18px",
+              fontSize: "15px",
               fontWeight: 600,
               mt: "10px",
               fontFamily: "Nunito Sans",
@@ -130,7 +131,7 @@ function LeadDetails() {
           </Typography>
           <Typography
             sx={{
-              fontSize: "18px",
+              fontSize: "15px",
               fontWeight: 600,
               mt: "10px",
               fontFamily: "Nunito Sans",
@@ -151,7 +152,7 @@ function LeadDetails() {
           </Typography>
           <Typography
             sx={{
-              fontSize: "18px",
+              fontSize: "15px",
               fontWeight: 600,
               mt: "10px",
               fontFamily: "Nunito Sans",

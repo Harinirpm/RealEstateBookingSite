@@ -12,6 +12,21 @@ import BathtubOutlinedIcon from "@mui/icons-material/BathtubOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ViewTimelineOutlinedIcon from "@mui/icons-material/ViewTimelineOutlined";
 import Divider from "@mui/material/Divider";
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import { useState } from "react";
+// import Avatar1 from '../../assets/avatar1.png'
+
+function srcset(image, size, rows = 1, cols = 1) {
+  return {
+    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
+    srcSet: `${image}?w=${size * cols}&h=${
+      size * rows
+    }&fit=crop&auto=format&dpr=2 2x`,
+  };
+}
+
+
 const LeftContent = () => {
   const items = [
     { icon: <HotelOutlinedIcon sx={{ fontSize: "21px" }} />, text: "2" },
@@ -22,6 +37,39 @@ const LeftContent = () => {
       text: "2000 Sq.Ft",
     },
   ];
+
+  const itemData = [
+    {
+      id:1,
+      img: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg',
+      title: 'home1',
+      rows: 2,
+      cols: 2,
+    },
+    {
+      id:2,
+      img: 'https://i.pinimg.com/474x/2d/a4/28/2da428ddc43445902549a534762839c7.jpg',
+      title: 'home2',
+    },
+    {
+      id:3,
+      img: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg',
+      title: 'home3',
+    },
+    {
+      id:4,
+      img: 'https://thumbs.dreamstime.com/b/beautiful-exterior-home-pictures-new-design-images-modern-best-house-latest-front-wall-dream-168875259.jpg',
+      title: 'home4',
+    },
+    {
+      id:5,
+      img: 'https://i.pinimg.com/474x/2d/a4/28/2da428ddc43445902549a534762839c7.jpg',
+      title: 'home5',
+    },
+    
+  ];
+
+ 
 
   return (
     <Card
@@ -37,68 +85,63 @@ const LeftContent = () => {
       <Box
         sx={{
           display: "flex",
-          p: 2,
+          // p: 2,
           alignItems: "center",
           borderTopLeftRadius: 2,
           borderTopRightRadius: 2,
         }}
       >
-        <Box sx={{ display: "flex", width: "22rem" }}>
-          <CardMedia
-            component="img"
-            alt="Property Image 1"
-            height="150"
-            image="https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG91c2V8ZW58MHx8MHx8fDA%3D"
-            sx={{ flex: 1, marginRight: 1, borderRadius: 1 }}
-          />
-        </Box>
-        <Box display="flex" flexDirection="column" sx={{ padding: 0.5 }}>
-          <Grid2 container spacing={1}>
-            <Grid2 item xs={6}>
-              <CardMedia
-                component="img"
-                alt="Property Image 1"
-                height="70"
-                width="100"
-                image="https://images.unsplash.com/photo-1444676632488-26a136c45b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlfGVufDB8fDB8fHww"
-                sx={{ borderRadius: 1 }}
-              />
-            </Grid2>
-            <Grid2 item xs={6}>
-              <CardMedia
-                component="img"
-                alt="Property Image 2"
-                height="70"
-                width="100"
-                image="https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG91c2V8ZW58MHx8MHx8fDA%3D"
-                sx={{ borderRadius: 1 }}
-              />
-            </Grid2>
-            <Grid2 item xs={6}>
-              <CardMedia
-                component="img"
-                alt="Property Image 3"
-                height="70"
-                image="https://images.unsplash.com/photo-1444676632488-26a136c45b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlfGVufDB8fDB8fHww"
-                sx={{ borderRadius: 1 }}
-              />
-            </Grid2>
-            <Grid2 item xs={6}>
-              <CardMedia
-                component="img"
-                alt="Property Image 4"
-                height="70"
-                image="https://images.unsplash.com/photo-1444676632488-26a136c45b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlfGVufDB8fDB8fHww"
-                sx={{ borderRadius: 1 }}
-              />
-            </Grid2>
-          </Grid2>
+        <Box sx={{ display: "flex", width: "100%" }}>
+        <ImageList
+      sx={{ width: 500, }}
+      variant="quilted"
+      cols={4}
+      rowHeight={80}
+    >
+      {itemData.map((item) => (
+        <ImageListItem
+        key={item.id}
+        cols={item.cols || 1}
+        rows={item.rows || 1}
+        sx={{ position: "relative" }} 
+      >
+        <img
+          {...srcset(item.img, 121, item.rows, item.cols)}
+          alt={item.title}
+          loading="lazy"
+          style={{ width: "100%", height: "100%",borderRadius:"8px" }}
+        />
+        {item.id === 5 && 
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)", 
+            zIndex: 1, 
+            textAlign:"center",
+            justifyContent:"center",
+            alignItems:"center",
+            borderRadius:"8px"
+          }}
+        >
+          <Typography sx={{color:"white",zIndex:1,fontSize:"21px",
+           pt:"20px"}}>+8</Typography>
+          </Box>
+}
+      </ImageListItem>
+      ))}
+    </ImageList>
         </Box>
       </Box>
-      <CardContent sx={{ padding: 1 }}>
+
+
+      <CardContent sx={{ padding: 0 }}>
         <Box
           display={"flex"}
-          sx={{ mt: "-1.5rem", flexDirection: "row", alignItems: "center" }}
+          sx={{ mt: "0rem", flexDirection: "row", alignItems: "center" }}
         >
           <Typography
             color="black"
@@ -166,7 +209,7 @@ const LeftContent = () => {
           ))}
         </Box>
       </CardContent>
-      <Divider sx={{ width: "100%", color: "gray", mt: "30px" }} />
+      <Divider sx={{ width: "100%", color: "gray", mt: "50px" }} />
 
       <Box
         mt={1}

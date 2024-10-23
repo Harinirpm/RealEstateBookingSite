@@ -50,7 +50,7 @@ const InventoryItem = ({ onClose }) => {
             justifyContent: "space-between",
           }}
         >
-          <DialogTitle sx={{ fontWeight: "600", fontSize: "18px" }}>
+          <DialogTitle sx={{ fontWeight: "600", fontSize: "16px" }}>
             Pricing Table
           </DialogTitle>
           <ClearOutlinedIcon
@@ -104,7 +104,7 @@ const InventoryItem = ({ onClose }) => {
                     margin: 0,
                     boxShadow: "none",
                     border: "1px solid #bdbfbe",
-                    fontWeight: 600,
+                    fontWeight: 500,
                     fontSize: "16px",
                     height: "46px",
                     mr: "10px",
@@ -175,7 +175,7 @@ const InventoryItem = ({ onClose }) => {
                     margin: 0,
                     boxShadow: "none",
                     border: "1px solid #bdbfbe",
-                    fontWeight: 600,
+                    fontWeight: 500,
                     fontSize: "16px",
                     width: "100%",
                     height: "46px",
@@ -199,7 +199,7 @@ const InventoryItem = ({ onClose }) => {
                     margin: 0,
                     boxShadow: "none",
                     border: "1px solid #bdbfbe",
-                    fontWeight: 600,
+                    fontWeight: 500,
                     fontSize: "16px",
                     width: "100%",
                     height: "46px",
@@ -257,7 +257,7 @@ const InventoryItem = ({ onClose }) => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Typography variant="body2" sx={{ marginLeft: "0.5rem" }}>
+                      <Typography sx={{ marginLeft: "0.5rem" }}>
                         $
                       </Typography>
                     </InputAdornment>
@@ -292,7 +292,7 @@ const InventoryItem = ({ onClose }) => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Typography variant="body2" sx={{ marginLeft: "0.5rem" }}>
+                      <Typography  sx={{ marginLeft: "0.5rem" }}>
                         QTY
                       </Typography>
                     </InputAdornment>

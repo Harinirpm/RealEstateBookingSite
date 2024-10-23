@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Box } from "@mui/material";
+import { Button, Box, DialogActions } from "@mui/material";
 import {
   Dialog,
   DialogTitle,
@@ -17,6 +17,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
+import { MdOutlineHouseboat } from "react-icons/md";
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -77,12 +78,27 @@ const IOSSwitch = styled((props) => (
     }),
   },
 }));
-
 const AddAmenities = ({ onClose }) => {
   const [switchStates, setSwitchStates] = useState(Array(10).fill(false));
-
+  const [selectedRadio, setSelectedRadio] = useState(Array(10).fill(false));
+  const [totalValue, setTotalValue] = useState(0);
   const handleSwitchChange = (index) => {
+    const isSwitchOn = switchStates[index];
+    if (isSwitchOn && selectedRadio[index]) {
+      setTotalValue((prevValue) => prevValue - 20);
+      setSelectedRadio((prevStates) =>
+        prevStates.map((state, i) => (i === index ? false : state))
+      );
+    }
     setSwitchStates((prevStates) =>
+      prevStates.map((state, i) => (i === index ? !state : state))
+    );
+  };
+  const handleRadioChange = (index) => {
+    const isCurrentlySelected = selectedRadio[index];
+    const updateValue = isCurrentlySelected ? totalValue - 20 : totalValue + 20;
+    setTotalValue(updateValue);
+    setSelectedRadio((prevStates) =>
       prevStates.map((state, i) => (i === index ? !state : state))
     );
   };
@@ -165,7 +181,7 @@ const AddAmenities = ({ onClose }) => {
             flexDirection="row"
             justifyContent="space-between"
           >
-            <DialogTitle sx={{ fontWeight: "600", fontSize: "18px" }}>
+            <DialogTitle sx={{ fontWeight: "800", fontSize: "16px" }}>
               Add Amenities
             </DialogTitle>
             <ClearOutlinedIcon
@@ -183,6 +199,7 @@ const AddAmenities = ({ onClose }) => {
             display="flex"
             flexDirection="row"
             justifyContent="space-between"
+            alignItems="center"
             backgroundColor="#FEEAEA80"
             sx={{
               height: "10%",
@@ -194,7 +211,7 @@ const AddAmenities = ({ onClose }) => {
               ml: "20px",
             }}
           >
-            <Box
+            {/* <Box
               display="flex"
               flexDirection="row"
               justifyContent="space-between"
@@ -204,9 +221,9 @@ const AddAmenities = ({ onClose }) => {
                 // top: 5,
                 zIndex: 1,
               }}
-            ></Box>
-            <Box display="flex" flexDirection="row">
-              <AccountBalanceOutlinedIcon sx={{ color: "#B3776D" }} />
+            ></Box> */}
+            <Box display="flex" flexDirection="row" alignItems="center">
+              < MdOutlineHouseboat style={{ color: "#B3776D",fontSize:"35px", }} />
               <Typography
                 color="#B3776D"
                 sx={{
@@ -216,16 +233,27 @@ const AddAmenities = ({ onClose }) => {
                   whiteSpace: "nowrap",
                 }}
               >
-                05 Total Amenities
+                05
+              </Typography>
+              <Typography
+                color="#B3776D"
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: "500",
+                  ml: "5px",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Total Amenity
               </Typography>
             </Box>
 
-            <Box display="flex" ml={14}>
+            <Box display="flex" ml={1}>
               <Typography
                 color="#B3776D"
-                sx={{ fontSize: "16px", fontWeight: "600" }}
+                sx={{ fontSize: "16px", fontWeight: "600",flexBasis:"50%", whiteSpace:"nowrap"}}
               >
-                $ 200.00
+                $ {totalValue.toFixed(2)}
               </Typography>
             </Box>
           </Box>
@@ -357,16 +385,10 @@ const AddAmenities = ({ onClose }) => {
                 </Box>
 
                 <Box>
-                  <FormControlLabel
-                    control={
-                      <IOSSwitch
-                        sx={{ m: 1 }}
-                        checked={switchStates[index]}
-                        onChange={() => handleSwitchChange(index)}
-                        defaultChecked
-                      />
-                    }
-                  />
+                <FormControlLabel control={<IOSSwitch 
+                checked={switchStates[index]} 
+                onChange={() => 
+                handleSwitchChange(index)} />} />
                 </Box>
               </Box>
 
@@ -379,41 +401,40 @@ const AddAmenities = ({ onClose }) => {
                 }}
               >
                 <Divider sx={{ width: "100%", my: 1 }} />
-                <FormControl sx={{ ml: "20px" }}>
-                  <FormControlLabel
-                    value="applicability"
-                    control={<Radio />}
-                    label="Free applicability"
-                  />
-                </FormControl>
+                {switchStates[index] && (
+                <Box sx={{ flexDirection: "column", }}>
+                  <FormControl>
+                    <FormControlLabel 
+                    control={<Radio checked={selectedRadio[index]} 
+                    sx={{ml:"20px"}}
+                    onChange={() => handleRadioChange(index)} />} 
+                    label="Free Applicable"/>
+                  </FormControl>
+                </Box>
+              )}
               </Box>
             </Box>
           ))}
 
-          <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "20px",
-              backgroundColor: "white",
-              position: "fixed",
-              bottom: 32,
-              width:"21%",
-              zIndex: 1,
-            }}
-          >
-            <Button
-              variant="contained"
-              onClick={onClose}
-              sx={{ mt: "10px", textTransform: "none", height: "45px",width:"100%",padding:"10px" }}
-            >
-              update
-            </Button>
-          </Box>
         </DialogContent>
+        <DialogActions
+        sx={{
+          padding: "16px 24px",
+          backgroundColor: "white",
+        }}
+      >
+        <Button
+          variant="contained"
+          onClick={onClose}
+          sx={{
+            textTransform: "none",
+            width: "100%",
+            padding: "10px",
+          }}
+        >
+          Update
+        </Button>
+      </DialogActions>
       </Dialog>
     </Box>
   );

@@ -53,9 +53,10 @@ const PricingMenu = () => {
         }}
         bottom="-80px"
         left="-90px"
+        
       >
-        <Box>
-          <MenuItem onClick={(e) => handleOpen(e, "AddPricing")}>
+        <Box >
+          <MenuItem onClick={(e) => handleOpen(e, "AddPricing")}  >
             Add Pricing Component
           </MenuItem>
           <Divider />

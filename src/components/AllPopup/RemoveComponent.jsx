@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -26,82 +26,54 @@ const RemoveComponent = ({ open, onClose }) => {
     totalPrice: "$1,200",
   };
 
-  const [pricingDetails, setPricingDetails]  = useState([
-      {
-        billName: "Bill Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Bill Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Bill Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Amenity Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Amenity Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Amenity Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Amenity Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Amenity Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Amenity Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-      {
-        billName: "Amenity Name Here",
-        amount: "$1,000",
-        icon: <DeleteOutlinedIcon />,
-      },
-    ]);
+  const [pricingDetails, setPricingDetails] = useState([
+    {
+      billName: "Bill Name Here",
+      amount: 370, 
+      icon: <DeleteOutlinedIcon />,
+    },
+    {
+      billName: "Bill Name Here",
+      amount: 2700,
+      icon: <DeleteOutlinedIcon />,
+    },
+    {
+      billName: "Bill Name Here",
+      amount: 1000,
+      icon: <DeleteOutlinedIcon />,
+    },
+    {
+      billName: "Amenity Name Here",
+      amount: 830,
+      icon: <DeleteOutlinedIcon />,
+    },
+    {
+      billName: "Amenity Name Here",
+      amount: 100,
+      icon: <DeleteOutlinedIcon />,
+    },
+    {
+      billName: "Amenity Name Here",
+      amount: 2000,
+      icon: <DeleteOutlinedIcon />,
+    },
+    {
+      billName: "Amenity Name Here",
+      amount: 1000,
+      icon: <DeleteOutlinedIcon />,
+    },
+    
+  ]);
 
-  const [discount, setDiscount] = useState("");
-  const [selectedDiscount, setSelectedDiscount] = useState("AED");
-
-  const discountOptions = [
-    { label: "AED", value: "AED", discountValue: 1000 },
-    { label: "$", value: "USD", discountValue: 1000 },
-    { label: "%", value: "Percentage", discountValue: 5 },
-  ];
-
-  const handleDiscountChange = (event) => {
-    const selectedOption = discountOptions.find(
-      (option) => option.value === event.target.value
-    );
-    setSelectedDiscount(event.target.value);
-    setDiscount(selectedOption.discountValue);
-  };
-
+  const [finalTotal, setFinalTotal] = useState(0);
+  useEffect(() => {
+    const total = pricingDetails.reduce((acc, item) => acc + item.amount, 0);
+    setFinalTotal(total);
+  }, [pricingDetails]);
   const handleDelete = (indexToRemove) => {
-    const updatePricingDetails = pricingDetails.filter((_,index) => index !== indexToRemove);
-    setPricingDetails(updatePricingDetails);
+    const updatedPricingDetails = pricingDetails.filter((_, index) => index !== indexToRemove);
+    setPricingDetails(updatedPricingDetails);
   };
-
-
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <Box
@@ -111,7 +83,7 @@ const RemoveComponent = ({ open, onClose }) => {
           justifyContent: "space-between",
         }}
       >
-        <DialogTitle sx={{ fontWeight: "600" }}>Remove Component</DialogTitle>
+        <DialogTitle sx={{ fontWeight: "600", fontSize: "16px" }}>Remove Component</DialogTitle>
         <ClearOutlinedIcon
           sx={{ fontSize: "27px", padding: "15px", cursor: "pointer" }}
           onClick={onClose}
@@ -124,20 +96,38 @@ const RemoveComponent = ({ open, onClose }) => {
           <Grid2 item xs={12} sm={8} flex={2}>
             <LeftContent />
           </Grid2>
-
           {/* Right Section - Pricing Details */}
           <Grid2 item xs={12} sm={4} flex={2}>
             <Box
               p={2}
-              border="1px solid #e0e0e0"
+              // border="1px solid #e0e0e0"
               borderRadius="8px"
-              sx={{ backgroundColor: "#F5F7FA", height: "500px", position: "relative" }}
+              sx={{
+                backgroundColor: "#F5F7FA",
+                height: "500px",
+                position: "relative",
+              }}
             >
-              <Typography sx={{ fontWeight: "600", mb: "20px", position: "sticky", top: 0, backgroundColor: "#F5F7FA", zIndex: 1 }}>
+              <Typography
+                sx={{
+                  fontWeight: "600",
+                  mb: "20px",
+                  position: "sticky",
+                  top: 0,
+                  backgroundColor: "#F5F7FA",
+                  zIndex: 1,
+                }}
+              >
                 UNIT PRICING DETAIL
               </Typography>
-              <Box sx={{ overflowY: "auto", maxHeight: "380px",msScrollbarWidth:"none",
-        scrollbarWidth:"none", }}>
+              <Box
+                sx={{
+                  overflowY: "auto",
+                  maxHeight: "380px",
+                  msScrollbarWidth: "none",
+                  scrollbarWidth: "none",
+                }}
+              >
                 {pricingDetails.map((item, index) => (
                   <Box key={index}>
                     <Box display="flex" justifyContent="space-between" mb={0}>
@@ -167,7 +157,7 @@ const RemoveComponent = ({ open, onClose }) => {
                             mt: "5px",
                           }}
                         >
-                          {item.amount}
+                          ${item.amount} {/* Show amount as a string */}
                         </Typography>
                         <IconButton
                           sx={{
@@ -178,9 +168,9 @@ const RemoveComponent = ({ open, onClose }) => {
                             backgroundColor: "#ffdbd1",
                             borderRadius: "8px",
                             ml: "10px",
-                           "&:hover": { backgroundColor:"pink" },
+                            "&:hover": { backgroundColor: "pink" },
                           }}
-                          onClick={() => handleDelete(index)} 
+                          onClick={() => handleDelete(index)}
                         >
                           {item.icon}
                         </IconButton>
@@ -193,43 +183,41 @@ const RemoveComponent = ({ open, onClose }) => {
               <Box
                 display="flex"
                 justifyContent="space-between"
-                mt={2}
                 sx={{
                   backgroundColor: "#E4E8EE",
                   alignItems: "center",
                   padding: "10px",
-                  borderRadius: "10px",
-                  position: "sticky",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
+                  borderRadius: "7px",
+                  position: "absolute",
+                  bottom: "10px",
+                  left: "10px",
+                  right: "10px",
                   zIndex: 1,
                 }}
               >
                 <Typography sx={{ fontWeight: "600" }}>Final Total</Typography>
-                <Typography sx={{ fontWeight: "600" }}>
-                  {selected.totalPrice}
-                </Typography>
+                <Typography sx={{ fontWeight: "600" }}>${finalTotal}</Typography> {/* Display calculated final total */}
               </Box>
             </Box>
+
             <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "10px",
-              backgroundColor: "white",
-            }}
-          >
-            <Button
-              variant="contained"
-              onClick={onClose}
-              sx={{ mt: "10px", textTransform: "none", height: "45px",width:"100%",padding:"10px" }}
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                padding: "10px",
+                backgroundColor: "white",
+              }}
             >
-              update & save
-            </Button>
+              <Button
+                variant="contained"
+                onClick={onClose}
+                sx={{ mt: "10px", textTransform: "none", height: "45px", width: "100%", padding: "10px" }}
+              >
+                update & save
+              </Button>
             </Box>
           </Grid2>
         </Grid2>
