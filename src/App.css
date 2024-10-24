@@ -4,5 +4,6 @@
   padding: 0;
   background-color: #166bc0;
   height: 100vh;
+  max-height: 100vh;
   box-sizing: border-box;
 }

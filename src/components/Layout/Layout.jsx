@@ -5,8 +5,8 @@ import TopNavbar from "../Navbar/TopNavbar";
 import useWindowDimensions from "../useWindowDiamention/UseWindowDiamention";
 function Layout() {
   const { height, width } = useWindowDimensions();
-  // const topNavbarHeight = 60; 
-  // const sideNavbarWidth = 80;
+  const topNavbarHeight = 68; 
+  const sideNavbarWidth = 63;
   
   return (
     <>

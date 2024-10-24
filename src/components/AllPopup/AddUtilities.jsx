@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Box, DialogActions } from "@mui/material";
 import {
   Dialog,
@@ -7,16 +7,15 @@ import {
   Typography,
   Divider,
 } from "@mui/material";
-// import Buttons from '../Button/Button';
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
-import AssistantOutlinedIcon from '@mui/icons-material/AssistantOutlined';
 import Avatar from "@mui/material/Avatar";
 import Avatar3 from "../../assets/avatar3.jpeg";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
-
+import { useDispatch } from "react-redux";
+import { setUtilitiesTotal } from "../../store/PaymentSlice";
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
@@ -81,15 +80,27 @@ const AddUtilities = ({ onClose }) => {
 
   const [switchStates, setSwitchStates] = useState(Array(10).fill(false));
   const [totalValue, setTotalValue] = useState(0);
-  
+  const [count, setCount] = useState(0);
+  const [utilityTotal,setUtilityTotal] = useState(0);
   const handleSwitchChange = (index) => {
     const isCurrentlySelected = switchStates[index];
-    const updateValue = isCurrentlySelected ? totalValue - 20 : totalValue + 20;
-    setTotalValue(updateValue);
+    
+    const updatedValue = isCurrentlySelected ? totalValue - 20 : totalValue + 20;
+    const updatedCount = isCurrentlySelected ? count -1 : count + 1;
+    setTotalValue(updatedValue);
+    setUtilityTotal(updatedValue)
+    setCount(updatedCount);
     setSwitchStates((prevStates) => 
       prevStates.map((state,i) => i === index ? !state : state)
     );
   };
+
+  console.log(utilityTotal);
+   const dispatch = useDispatch();
+   useEffect(()=>{
+    dispatch(setUtilitiesTotal({utilityTotal}));
+   },[utilityTotal,dispatch]
+  );
 
   const features = [
     {
@@ -219,7 +230,7 @@ const AddUtilities = ({ onClose }) => {
                   whiteSpace: "nowrap",
                 }}
               >
-                05
+                {`0${count}`}
               </Typography>
               <Typography
                 color="#6DAFB3"

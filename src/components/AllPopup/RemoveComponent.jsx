@@ -13,6 +13,9 @@ import {
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import LeftContent from "../CustomDialogBox/LeftContent";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useDispatch } from "react-redux";
+import { setRemovalsTotal } from "../../store/PaymentSlice";
+import Buttons from "../Button/Button";
 
 const RemoveComponent = ({ open, onClose }) => {
   const selected = {
@@ -66,14 +69,22 @@ const RemoveComponent = ({ open, onClose }) => {
   ]);
 
   const [finalTotal, setFinalTotal] = useState(0);
+  const [removalTotal,setRemovalTotal] = useState(0);
   useEffect(() => {
     const total = pricingDetails.reduce((acc, item) => acc + item.amount, 0);
     setFinalTotal(total);
+    setRemovalTotal(total);
   }, [pricingDetails]);
   const handleDelete = (indexToRemove) => {
-    const updatedPricingDetails = pricingDetails.filter((_, index) => index !== indexToRemove);
-    setPricingDetails(updatedPricingDetails);
+    const updatedValue = pricingDetails.filter((_, index) => index !== indexToRemove);
+    setPricingDetails(updatedValue);
   };
+  
+  console.log(removalTotal);
+  const dispatch = useDispatch();
+  useEffect(()=> {
+    dispatch(setRemovalsTotal(removalTotal));
+  },[removalTotal,dispatch])
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <Box
@@ -96,7 +107,7 @@ const RemoveComponent = ({ open, onClose }) => {
           <Grid2 item xs={12} sm={8} flex={2}>
             <LeftContent />
           </Grid2>
-          {/* Right Section - Pricing Details */}
+
           <Grid2 item xs={12} sm={4} flex={2}>
             <Box
               p={2}
@@ -157,7 +168,7 @@ const RemoveComponent = ({ open, onClose }) => {
                             mt: "5px",
                           }}
                         >
-                          ${item.amount} {/* Show amount as a string */}
+                          ${item.amount}
                         </Typography>
                         <IconButton
                           sx={{
@@ -207,17 +218,28 @@ const RemoveComponent = ({ open, onClose }) => {
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
-                padding: "10px",
+                // padding: "10px",
                 backgroundColor: "white",
+                width:"100%",
+                mt:"10px",
               }}
             >
-              <Button
-                variant="contained"
-                onClick={onClose}
-                sx={{ mt: "10px", textTransform: "none", height: "45px", width: "100%", padding: "10px" }}
-              >
-                update & save
-              </Button>
+             <Buttons
+                text="Update&Save"
+                bgcolor="#5078E1"
+                textcolor="white"
+                // onClick={handleSaveDiscount}
+                sx={{
+                  boxShadow: "none",
+                  border: "1px solid #bdbfbe",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "10px",
+                  fontWeight: 600,
+                  fontSize: "16px",
+                  mr:"px",
+                }}
+              />
             </Box>
           </Grid2>
         </Grid2>

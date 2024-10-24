@@ -6,17 +6,26 @@ import PaymentData from "../PaymentData/PaymentData";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 function QuotationSummary() {
-  const paymentDetails = [
-    { label: "Total Amount", quantity: "3", value: "$ 3,900.00" },
-    { label: "Total Discount", quantity: "10%", value: "- $ 100.00" },
-    { label: "Total Refundable", quantity: "0%", value: "$ 0" },
-    { label: "Total Tax", quantity: "18%", value: "$ 648.00" },
-  ];
-  // const { items, quoteAmount } = useSelector((state) => state.payment);
-  // console.log(quoteAmount);
-  const { quoteAmount, amenitiesTotal, utilityTotal, removalTotal, discount } = useSelector(
+  const {amenityTotal, utilityTotal, removalTotal, discount } = useSelector(
     (state) => state.payment
   );
+  console.log(amenityTotal);
+  console.log(removalTotal);
+  console.log(utilityTotal);
+  console.log(discount);
+  const totalAmount = amenityTotal+utilityTotal + removalTotal;
+  const totalTax = totalAmount * 0.18;
+  const totalDiscount = discount;
+  const quoteTotal = (totalAmount - totalDiscount) + totalTax;
+  // if(quoteTotal<0){
+  //   alert("should not be less than zero");
+  // }
+  const paymentDetails = [
+    { label: "Total Amount", quantity: "3", value: `$ ${totalAmount.toFixed(2)}` },
+    { label: "Total Discount", quantity: "10%", value: `- $ ${totalDiscount.toFixed(2)}`},
+    { label: "Total Refundable", quantity: "0%", value: "$ 0" },
+    { label: "Total Tax", quantity: "18%", value: `$ ${totalTax.toFixed(2)}` },
+  ];
   const [grandTotal, setGrandTotal] = useState(0);
   const updateGrandTotal = (newTotal) => {
     setGrandTotal(newTotal);
@@ -56,7 +65,7 @@ function QuotationSummary() {
             Quote Amount
           </Typography>
           <Typography sx={{ fontSize: "17px", fontWeight: 600 }}>
-          {`$ ${grandTotal.toLocaleString()}`}
+          {`$ ${quoteTotal.toLocaleString()}`}
           </Typography>
         </Box>
       </Box>

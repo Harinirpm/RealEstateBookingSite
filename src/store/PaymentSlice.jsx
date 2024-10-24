@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  amenitiesTotal: 0,    
-  utilityTotal: 0,      
-  removalTotal: 0,      
-  discount: 0,          
-  quoteAmount: 0,       
+  amenityTotal: 300,    
+  utilityTotal: 100,      
+  removalTotal: 10,      
+  discount: 100,          
+  quoteAmount: 10,       
 };
 const paymentSlice = createSlice({
   name: "payment",
@@ -14,34 +14,30 @@ const paymentSlice = createSlice({
       if (typeof action.payload !== "number") {
         console.warn("Payload for setAmenitiesTotal should be a number.");
       }
-      state.amenitiesTotal = action.payload || 0;
-      state.quoteAmount = calculateQuoteAmount(state);
+      state.amenityTotal = calculateQuoteAmount(state);
    },
-    setUtilityTotal: (state, action) => {
-      state.utilityTotal = action.payload || 0;      
-      state.quoteAmount = calculateQuoteAmount(state);
+    setUtilitiesTotal: (state, action) => {     
+      state.utilityTotal = calculateQuoteAmount(state);
     },
-    setRemovalTotal: (state, action) => {
-      state.removalTotal = action.payload || 0;      
-      state.quoteAmount = calculateQuoteAmount(state);
+    setRemovalsTotal: (state, action) => {     
+      state.removalTotal = calculateQuoteAmount(state);
     },
-    setDiscount: (state, action) => {
-      state.discount = action.payload || 0;           
-      state.quoteAmount = calculateQuoteAmount(state);
+    setDiscounts: (state, action) => {          
+      state.discount = calculateQuoteAmount(state);
     },
   },
 });
 const calculateQuoteAmount = (state) => {
   const totalBeforeDiscount =
-    state.amenitiesTotal + state.utilityTotal + state.removalTotal;
+    state.amenityTotal + state.utilityTotal + state.removalTotal;
   return totalBeforeDiscount - state.discount;
 };
 export const selectQuoteAmount = (state) => state.payment.quoteAmount;
 export const selectAmenitiesTotal = (state) => state.payment.amenitiesTotal;
 export const {
   setAmenitiesTotal,
-  setUtilityTotal,
-  setRemovalTotal,
-  setDiscount,
+  setUtilitiesTotal,
+  setRemovalsTotal,
+  setDiscounts,
 } = paymentSlice.actions;
 export default paymentSlice.reducer;

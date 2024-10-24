@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Box, DialogActions } from "@mui/material";
 import {
   Dialog,
@@ -18,6 +18,8 @@ import Radio from "@mui/material/Radio";
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import { MdOutlineHouseboat } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { setAmenitiesTotal } from "../../store/PaymentSlice";
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -82,10 +84,15 @@ const AddAmenities = ({ onClose }) => {
   const [switchStates, setSwitchStates] = useState(Array(10).fill(false));
   const [selectedRadio, setSelectedRadio] = useState(Array(10).fill(false));
   const [totalValue, setTotalValue] = useState(0);
+  const [count, setCount] = useState(0);
+  const [amenityTotal, setAmenityTotal] = useState(0);
+  const dispatch = useDispatch();
+
   const handleSwitchChange = (index) => {
     const isSwitchOn = switchStates[index];
     if (isSwitchOn && selectedRadio[index]) {
       setTotalValue((prevValue) => prevValue - 20);
+      setCount((prevCount) => prevCount - 1);
       setSelectedRadio((prevStates) =>
         prevStates.map((state, i) => (i === index ? false : state))
       );
@@ -96,13 +103,23 @@ const AddAmenities = ({ onClose }) => {
   };
   const handleRadioChange = (index) => {
     const isCurrentlySelected = selectedRadio[index];
-    const updateValue = isCurrentlySelected ? totalValue - 20 : totalValue + 20;
-    setTotalValue(updateValue);
-    setSelectedRadio((prevStates) =>
-      prevStates.map((state, i) => (i === index ? !state : state))
-    );
+    const isSwitchOn = switchStates[index];
+    if (isSwitchOn) {
+     const updatedValue = isCurrentlySelected ? totalValue - 20 : totalValue + 20;
+      const updatedCount = isCurrentlySelected ? count - 1 : count + 1;
+      setTotalValue(updatedValue);
+      setAmenityTotal(updatedValue);
+      setCount(updatedCount);
+      setSelectedRadio((prevStates) =>
+        prevStates.map((state, i) => (i === index ? !state : state))
+      );
+    }
   };
-
+console.log(amenityTotal);
+  useEffect(()=> {
+    dispatch(setAmenitiesTotal(amenityTotal));
+  },[amenityTotal,dispatch] 
+)
   const features = [
     {
       name: "Amenities name",
@@ -211,17 +228,6 @@ const AddAmenities = ({ onClose }) => {
               ml: "20px",
             }}
           >
-            {/* <Box
-              display="flex"
-              flexDirection="row"
-              justifyContent="space-between"
-              alignItems="center"
-              sx={{
-                position: "sticky",
-                // top: 5,
-                zIndex: 1,
-              }}
-            ></Box> */}
             <Box display="flex" flexDirection="row" alignItems="center">
               < MdOutlineHouseboat style={{ color: "#B3776D",fontSize:"35px", }} />
               <Typography
@@ -233,7 +239,7 @@ const AddAmenities = ({ onClose }) => {
                   whiteSpace: "nowrap",
                 }}
               >
-                05
+                {`0${count}`}
               </Typography>
               <Typography
                 color="#B3776D"
@@ -432,7 +438,7 @@ const AddAmenities = ({ onClose }) => {
             padding: "10px",
           }}
         >
-          Update
+          Update & Save
         </Button>
       </DialogActions>
       </Dialog>
