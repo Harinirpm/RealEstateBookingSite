@@ -4,6 +4,7 @@ import paymentReducer from "./PaymentSlice";
 const store = configureStore({
   reducer: {
     payment: paymentReducer,
+    
   },
 });
 

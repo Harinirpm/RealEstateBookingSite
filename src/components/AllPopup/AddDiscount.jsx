@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -15,9 +15,12 @@ import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import LeftContent from "../CustomDialogBox/LeftContent";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Buttons from "../Button/Button";
+import { useDispatch } from "react-redux";
+import { setDiscounts } from "../../store/PaymentSlice";
 
 const AddDiscount = ({ open, onClose }) => {
-  
+  const dispatch = useDispatch();
+ 
   const selected = {
     name: "Jumeirah Estate",
     unitCode: "UNIT-1234",
@@ -33,16 +36,13 @@ const AddDiscount = ({ open, onClose }) => {
       { billName: "Utility Name Here", amount: "$1,000" },
       { billName: "Utility Name Here", amount: "$1,000" },
     ],
-    totalPrice: "$1,200",
+    totalPrice: "$ 5000",
   };
 
-  const [discountValues, setDiscountValues] = useState(
-    Array(selected.pricingDetails.length).fill(0)
-  );
-  const [discountTypes, setDiscountTypes] = useState(
-    Array(selected.pricingDetails.length).fill("AED") 
-  );
+  const [discountValues, setDiscountValues] = useState(Array(selected.pricingDetails.length).fill(0));
+  const [discountTypes, setDiscountTypes] = useState(Array(selected.pricingDetails.length).fill("AED"));
   const [finalTotal, setFinalTotal] = useState(selected.totalPrice);
+  const [discount,selectDiscount] = useState(selected.totalPrice);
   const discountOptions = [
     { label: "AED", value: "AED" },
     { label: "USD", value: "USD" },
@@ -50,30 +50,40 @@ const AddDiscount = ({ open, onClose }) => {
   ];
   const handleDiscountChange = (index, discountType, discountamt) => {
     const updatedValue = [...discountValues];
-    let discount = 0;
+    let discountVal = 0;
     const itemAmount = parseFloat(
       selected.pricingDetails[index].amount.replace("$", "").replace(",", "")
     );
     if (discountType === "Percentage") {
-      discount = (itemAmount * discountamt) / 100;
+      discountVal = (itemAmount * discountamt) / 100;
     } else if (discountType === "AED" || discountType === "USD") {
-      discount = discountamt;
+      discountVal = discountamt;
     }
-    const potentialTotal = calculatePotentialTotal(updatedValue, discount, index);
-  if (potentialTotal < 0) {
-    alert("The total cannot be negative. Please adjust the discount.");
-    return;
-  }
-    updatedValue[index] = discount;
+    const potentialTotal = calculatePotentialTotal(
+      updatedValue,
+      discountVal,
+      index
+    );
+    if (potentialTotal < 0) {
+      alert("The total cannot be negative. Please adjust the discount.");
+      return;
+    }
+    updatedValue[index] = discountVal;
     setDiscountValues(updatedValue);
     calculateFinalTotal(updatedValue);
   };
-  const calculatePotentialTotal = (currentDiscountValues, newDiscount, index) => {
+  const calculatePotentialTotal = (
+    currentDiscountValues,
+    newDiscount,
+    index
+  ) => {
     const updatedValues = [...currentDiscountValues];
-    updatedValues[index] = newDiscount; 
+    updatedValues[index] = newDiscount;
     let total = 0;
     selected.pricingDetails.forEach((item, idx) => {
-      const itemAmount = parseFloat(item.amount.replace("$", "").replace(",", ""));
+      const itemAmount = parseFloat(
+        item.amount.replace("$", "").replace(",", "")
+      );
       const discountedAmount = itemAmount - updatedValues[idx];
       total += discountedAmount;
     });
@@ -89,12 +99,21 @@ const AddDiscount = ({ open, onClose }) => {
       total += discountedAmount;
     });
     setFinalTotal(`$${total.toLocaleString()}`);
+    selectDiscount(`$${total.toLocaleString()}`);
   };
   const handleDiscountTypeChange = (index, type) => {
     const updatedTypes = [...discountTypes];
-    updatedTypes[index] = type; 
+    updatedTypes[index] = type;
     setDiscountTypes(updatedTypes);
   };
+
+
+  console.log(discount);
+  useEffect(()=> {
+    dispatch(setDiscounts(discount));
+  },[discount,dispatch]);
+
+
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <Box
@@ -123,7 +142,12 @@ const AddDiscount = ({ open, onClose }) => {
             <Box
               p={2}
               borderRadius="6px"
-              sx={{ backgroundColor: "#F8F9FB", height: "500px", overflow: "hidden", position: "relative", }}
+              sx={{
+                backgroundColor: "#F8F9FB",
+                height: "500px",
+                overflow: "hidden",
+                position: "relative",
+              }}
             >
               <Typography
                 sx={{
@@ -163,7 +187,9 @@ const AddDiscount = ({ open, onClose }) => {
                         >
                           {item.billName}
                         </Typography>
-                        <Typography sx={{ fontWeight: "500", fontSize: "15px" }}>
+                        <Typography
+                          sx={{ fontWeight: "500", fontSize: "15px" }}
+                        >
                           Discount
                         </Typography>
                       </Box>
@@ -189,7 +215,13 @@ const AddDiscount = ({ open, onClose }) => {
                         >
                           <TextField
                             value={discountValues[index] || ""}
-                            onChange={(e) => handleDiscountChange(index, "AED", parseFloat(e.target.value))}
+                            onChange={(e) =>
+                              handleDiscountChange(
+                                index,
+                                "AED",
+                                parseFloat(e.target.value)
+                              )
+                            }
                             placeholder="$1000.00"
                             size="small"
                             sx={{
@@ -211,14 +243,17 @@ const AddDiscount = ({ open, onClose }) => {
                               disableUnderline: true,
                             }}
                           />
-
                           <Select
-                           value={discountTypes[index]}
-                           onChange={(e) => {
-                            handleDiscountTypeChange(index, e.target.value); 
-                            handleDiscountChange(index, e.target.value, discountValues[index]); 
-                          }}
-                          IconComponent={KeyboardArrowDownIcon}
+                            value={discountTypes[index]}
+                            onChange={(e) => {
+                              handleDiscountTypeChange(index, e.target.value);
+                              handleDiscountChange(
+                                index,
+                                e.target.value,
+                                discountValues[index]
+                              );
+                            }}
+                            IconComponent={KeyboardArrowDownIcon}
                             sx={{
                               width: "80px",
                               height: "20px",
@@ -254,7 +289,6 @@ const AddDiscount = ({ open, onClose }) => {
                   </Box>
                 ))}
               </Box>
-
               <Box
                 display="flex"
                 justifyContent="space-between"
@@ -275,35 +309,33 @@ const AddDiscount = ({ open, onClose }) => {
               </Box>
             </Box>
             <Box
-            display="flex"
-            flexDirection="row"
-            justifyContent="space-between"
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "10px",
-              backgroundColor: "white",
-            }}
-          >
-             <Buttons
-              text="Update & save"
-              bgcolor="#5078E1"
-              textcolor="white"
-              onClick={onClose}
-              // onClick={() => console.log("Save Discounts")}
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
               sx={{
-                // margin: 2,
-                boxShadow: "none",
-                border: "1px solid #bdbfbe",
-                hover: "none",
-                height: "45px",
+                backgroundColor: "white",
+                padding: "0px",
                 width: "100%",
-                borderRadius: "10px",
-                fontWeight: 600,
-                fontSize: "16px",
+                mt:"20px",
               }}
-            />
-          </Box>
+            >
+              <Buttons
+                text="Apply Discount"
+                bgcolor="#5078E1"
+                textcolor="white"
+                // onClick={handleSaveDiscount}
+                sx={{
+                  boxShadow: "none",
+                  border: "1px solid #bdbfbe",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "10px",
+                  fontWeight: 600,
+                  fontSize: "16px",
+                  mr:"px",
+                }}
+              />
+            </Box>
           </Grid2>
         </Grid2>
       </DialogContent>

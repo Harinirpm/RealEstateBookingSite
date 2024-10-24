@@ -19,6 +19,7 @@ import OneTimeChanges from "../AllPopup/OneTimeChanges";
 import Refundable from "../AllPopup/Refundable";
 import InventoryItem from '../AllPopup/InventoryItem';
 import ParkingSlot from "../AllPopup/ParkingSlot";
+import TooltipComponent from "../Tooltip/Tooltip";
 const PricingPopup = ({ open, onClose }) => {
   const [selectedPopup, setSelectedPopup] = useState(null); 
   const items = [
@@ -142,8 +143,9 @@ const PricingPopup = ({ open, onClose }) => {
               display="flex"
               flexDirection="row"
               justifyContent="space-between"
+              alignItems="center"
             >
-              <IconButton
+              {/* <IconButton
                 sx={{
                   color: "#CED3DD",
                   fontSize:"14px",
@@ -151,7 +153,8 @@ const PricingPopup = ({ open, onClose }) => {
                 }}
               >
                 {item.icon2}
-              </IconButton>
+              </IconButton> */}
+              <TooltipComponent />
               <IconButton sx={{ color: item.color,  }}>
                 {React.cloneElement(item.icon1, {
                   sx: { fontSize:"17px"},

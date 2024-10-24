@@ -84,8 +84,8 @@ function UnitDetails() {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "10px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+      gap: "10px", 
         }}
       >
         {landDetails.map((land) => (
@@ -97,7 +97,7 @@ function UnitDetails() {
               borderRadius: "8px",
               boxShadow: "none",
               border: "1px solid #e1e3e6",
-              
+             maxWidth: 345,
             }}
           >
             <Button

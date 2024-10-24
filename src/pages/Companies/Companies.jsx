@@ -7,11 +7,10 @@ import Button from "../../components/Button/Button";
 function Companies() {
   return (
 
-    <div style={{backgroundColor:"#F5F7FA",}}>
+    <div style={{backgroundColor:"#F5F7FA",marginBottom:0}}>
       <Header />
       <Box sx={{ mt: "2%", ml: "2%" }}>
         <QuotationDetails />
-
         <Box
           display="flex"
           backgroundColor="white"
