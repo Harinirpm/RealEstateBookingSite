@@ -8,19 +8,38 @@ import {
   Box,
   Button,
   Divider,
+  
 } from "@mui/material";
 
 import { TextField, MenuItem, Select } from "@mui/material";
 import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
 import LeftContent from "../CustomDialogBox/LeftContent";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import Buttons from "../Button/Button";
+// import Buttons from "../Button/Button";
 import { useDispatch } from "react-redux";
 import { setDiscounts } from "../../store/PaymentSlice";
+import { makeStyles } from "@mui/styles";
+
+
+// const buttonTheme =  makeStyles((theme) => ({
+//  buttonStyle : {
+//                 backgroundColor:"#5078E1",
+//                 color:"white",
+//                  boxShadow: "none",
+//                   border: "1px solid #5078E1",
+//                   height: "45px",
+//                   width: "100%",
+//                   borderRadius: "10px",
+//                   fontWeight: 600,
+//                   fontSize: "16px",
+//                   textTransform:"none"
+//                 }
+// }));
 
 const AddDiscount = ({ open, onClose }) => {
   const dispatch = useDispatch();
- 
+//  const classes = buttonTheme();
+
   const selected = {
     name: "Jumeirah Estate",
     unitCode: "UNIT-1234",
@@ -319,22 +338,7 @@ const AddDiscount = ({ open, onClose }) => {
                 mt:"20px",
               }}
             >
-              <Buttons
-                text="Apply Discount"
-                bgcolor="#5078E1"
-                textcolor="white"
-                // onClick={handleSaveDiscount}
-                sx={{
-                  boxShadow: "none",
-                  border: "1px solid #bdbfbe",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "10px",
-                  fontWeight: 600,
-                  fontSize: "16px",
-                  mr:"px",
-                }}
-              />
+              <Button variant="contained"> Apply Discount </Button> 
             </Box>
           </Grid2>
         </Grid2>

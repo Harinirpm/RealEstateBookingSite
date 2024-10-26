@@ -5,6 +5,7 @@ import Routes from './router/Routes';
 import { createTheme,ThemeProvider } from '@mui/material';
 import { Provider } from 'react-redux';
 import store from './store/Store'
+// import { globalTheme } from './Globaltheme';
 const theme = createTheme({
   typography:{
       fontFamily:"Nunito Sans",

@@ -268,6 +268,7 @@ const Primary = ({ onClose }) => {
                 variant="outlined"
                 size="small"
                 width="40rem"
+                type="number"
                 fullWidth
                 // value="200"
                 placeholder="200"
@@ -312,6 +313,7 @@ const Primary = ({ onClose }) => {
                 <Typography variant="body2" sx={{ fontWeight: 500 }}>
                   Maximum
                 </Typography>
+                
                 <Box sx={{ width: "100%" }}>
                   <BorderLinearProgress
                     variant="determinate"
@@ -322,6 +324,7 @@ const Primary = ({ onClose }) => {
                 <TextField
                   // value="$ 190"
                   placeholder="190"
+                  type="number"
                   size="small"
                   InputProps={{
                     startAdornment: (
@@ -368,15 +371,17 @@ const Primary = ({ onClose }) => {
                 <Typography variant="body2" sx={{ fontWeight: 500 }}>
                   Recommended
                 </Typography>
+                <Box sx={{width:"100%",backgroundColor:"#e8e8e8",borderRadius:"8px"}}>
                 <BorderLinearProgress
                   variant="determinate"
                   value={70}
                   color="lightgreen"
                 />
-
+                  </Box>
                 <TextField
                   // value="$ 120"
                   placeholder="100"
+                  type="number"
                   size="small"
                   InputProps={{
                     startAdornment: (
@@ -422,16 +427,19 @@ const Primary = ({ onClose }) => {
                 <Typography variant="body2" sx={{ fontWeight: 500 }}>
                   Minimum
                 </Typography>
+                <Box sx={{width:"100%",backgroundColor:"#e8e8e8",borderRadius:"8px"}}>
                 <BorderLinearProgress
                   variant="determinate"
                   value={40}
                   color="orange"
                 />
+                </Box>
 
                 <TextField
                   // value="$ 100"
                   placeholder="100"
                   size="small"
+                  type="number"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">

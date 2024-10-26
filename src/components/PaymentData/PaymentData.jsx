@@ -21,7 +21,7 @@ function PaymentData({ items = [], updateGrandTotal}) {
             marginBottom: "10px",
             ml: "20px",
             mr: "20px",
-            mt: "20px",
+            // mt: "20px",
           }}
         >
           <Typography sx={{ color: "#9ea0a3", flexBasis: "50%" }}>
@@ -56,7 +56,7 @@ function PaymentData({ items = [], updateGrandTotal}) {
                   fontWeight: "500",
                   fontSize: "15px",
                   letterSpacing: "0.9px",
-                  mt: "8px",
+                  // mt: "8px",
                   flexBasis: "40%",
                 }}
               >
@@ -69,7 +69,7 @@ function PaymentData({ items = [], updateGrandTotal}) {
                   fontWeight: "400",
                   fontSize: "15px",
                   letterSpacing: "0.9px",
-                  mt: "8px",
+                  // mt: "8px",
                   flexBasis: "15%",
                   textAlign: "center",
                 }}
@@ -83,7 +83,7 @@ function PaymentData({ items = [], updateGrandTotal}) {
                   fontSize: "15px",
                   letterSpacing: "0.9px",
                   marginRight: "20px",
-                  mt: "8px",
+                  // mt: "8px",
                   flexBasis: "22%",
                   textAlign: "right",
                   fontWeight: item.value === "- $ 100.00" 

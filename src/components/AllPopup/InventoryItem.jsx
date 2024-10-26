@@ -249,6 +249,7 @@ const InventoryItem = ({ onClose }) => {
             >
               <TextField
                 variant="outlined"
+                type="number"
                 size="small"
                 width="40rem"
                 fullWidth
@@ -284,6 +285,7 @@ const InventoryItem = ({ onClose }) => {
             >
               <TextField
                 variant="outlined"
+                type="number"
                 size="small"
                 width="40rem"
                 fullWidth

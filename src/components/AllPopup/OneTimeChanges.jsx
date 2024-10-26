@@ -331,6 +331,7 @@ const OneTimeChanges = ({ onClose }) => {
             >
               <TextField
                 variant="outlined"
+                type="number"
                 size="small"
                 width="40rem"
                 fullWidth

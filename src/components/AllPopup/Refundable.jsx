@@ -272,6 +272,7 @@ const Refundable = ({ onClose }) => {
               }}
             >
               <TextField
+              type="number"
                 variant="outlined"
                 size="small"
                 width="40rem"

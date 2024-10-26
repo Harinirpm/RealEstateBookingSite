@@ -15,7 +15,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import Switch from "@mui/material/Switch";
 import { styled } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
-import { setUtilitiesTotal } from "../../store/PaymentSlice";
+import { setUtilitiesTotal } from "../../store/PaymentSlice"; 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
