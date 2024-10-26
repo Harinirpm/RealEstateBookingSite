@@ -5,28 +5,23 @@ import Dropdown from '../Dropdown/Dropdown';
 
 function Header() 
 {
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => 
-  {
-    setAge(event.target.value);
-  };
   const options1 = ['Casagrand', 'Leelaland'];
 
   return (
     <Box
       sx={{
         height: "60px",
-        width: "100%",
+        width: "96%",
         backgroundColor: "white",
         borderBottom: "1px solid #ebebeb",
-        margin: 0,
-        padding: 0,
-        // mt: "-10px",
+        margin: "0 !important",
+        padding: "0 !important",
+        // mt: "60px",
         // ml: "80px",
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        position:"fixed",
       }}
     >
       <Box
@@ -40,6 +35,7 @@ function Header()
             borderRadius: "50%",
             backgroundColor: "#ededed",
             ml: "30px",
+            mt:"10px"
           }}
         />
         <Typography
@@ -47,12 +43,13 @@ function Header()
             fontWeight: "600",
             fontSize: "18px",
             ml: "10px",
+            mt:"10px"
           }}
         >
           Create Quotation To Existing Lead
         </Typography>
       </Box>
-      <Box sx={{ position: "relative", width: "210px", backgroundColor: "white" }}>
+      <Box sx={{padding:"20px",mb:"30px",height:"10px" }}>
 
         <Dropdown options={options1} placeholder='Casagrand'/>
       </Box>

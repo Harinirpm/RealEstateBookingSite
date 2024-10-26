@@ -35,12 +35,12 @@ function QuotationSummary() {
       sx={{
         backgroundColor: "#F8F9FB",
         ml: "20px",
-        mt: "-10px",
+        // mt: "-10px",
         mr: "20px",
         padding: "10px",
         borderRadius: "10px",
-        position: "fixed",
-        width: "26%",
+        // position: "fixed",
+        width: "93%",
       }}
     >
       <PaymentData items={paymentDetails} updateGrandTotal={updateGrandTotal} />
@@ -51,7 +51,7 @@ function QuotationSummary() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "100px",
+            marginTop: "150px",
             // marginBottom: "20px",
           }}
         >

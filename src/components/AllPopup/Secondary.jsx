@@ -154,52 +154,6 @@ const Secondary = ({ onClose }) => {
               <Dropdown options={options2} placeholder="Pricing Componenet"/>
             </Box>
           </Box>
-          {/* <Box sx={{ alignItems: "center", marginBottom: "2rem" }}> */}
-            {/* <Typography
-              variant="body2"
-              sx={{ flexGrow: 1, fontWeight: 500, mb: "4px" }}
-            >
-              UOM Value
-            </Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "2rem",
-                ml: "0rem",
-                flex: 1,
-              }}
-            >
-              <TextField
-                variant="outlined"
-                size="small"
-                width="40rem"
-                fullWidth
-                // value="200"
-                placeholder="200"
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <Typography variant="body2" sx={{ marginLeft: "0.5rem" }}>
-                        SAR / Total
-                      </Typography>
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  width: "100%",
-                  backgroundColor: "#f9f9f9",
-                  borderRadius: "8px",
-                  '& .MuiInputBase-input': {
-                    fontWeight: 600, 
-                  },
-                }}
-              />
-            </Box> */}
-          {/* </Box> */}
-
-          
             <Box
               sx={{
                 display: "flex",
@@ -379,6 +333,7 @@ const Secondary = ({ onClose }) => {
                 variant="outlined"
                 size="small"
                 width="40rem"
+                type="number"
                 fullWidth
                 // value="200"
                 placeholder="200"

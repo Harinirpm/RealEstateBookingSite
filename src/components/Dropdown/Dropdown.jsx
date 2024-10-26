@@ -7,16 +7,16 @@ import Select from '@mui/material/Select';
 import { Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+// const ITEM_HEIGHT = 48;
+// const ITEM_PADDING_TOP = 8;
+// const MenuProps = {
+//   PaperProps: {
+//     style: {
+//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//       width: 400,
+//     },
+//   },
+// };
 
 function Dropdown({ options = [], placeholder = "Select...", label = "Dropdown" }) {
   const theme = useTheme();
@@ -36,7 +36,7 @@ function Dropdown({ options = [], placeholder = "Select...", label = "Dropdown" 
       <FormControl 
         sx={{
           m: 0, 
-          width: '90%', 
+          width: '100%', 
           maxWidth: 300, 
           border: "none", 
           boxShadow: "none" 
@@ -54,11 +54,11 @@ function Dropdown({ options = [], placeholder = "Select...", label = "Dropdown" 
             }
             return selected.join(', ');
           }}
-          MenuProps={MenuProps}
+          // MenuProps={MenuProps}
           inputProps={{ 'aria-label': label }}
           IconComponent={KeyboardArrowDownIcon} 
           sx={{
-            height: "45px",
+            height: "40px",
             width: "100%", 
             borderRadius: "5px", 
             backgroundColor: "white", 

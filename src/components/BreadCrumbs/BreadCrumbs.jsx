@@ -100,8 +100,8 @@ function BreadCrumbs() {
          }}>
       <Typography sx={{backgroundColor:"#5078E1",
       borderRadius:"50%",
-      height:"15px",
-      width:"15px",
+      height:"25px",
+      width:"25px",
         color:"white",
         alignItems:"center",
         textAlign:"center",
@@ -109,8 +109,8 @@ function BreadCrumbs() {
         padding:"5px",
         pb:"7px",
         pt:"2px",
-        mt:"3px",
-        ml:"2px",
+        mt:"2px",
+        ml:"1px",
         boxShadow:"1px 0px 4px 0px"
         }}>4</Typography>
        </Box>Preview and

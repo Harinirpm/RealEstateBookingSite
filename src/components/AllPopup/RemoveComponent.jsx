@@ -224,22 +224,7 @@ const RemoveComponent = ({ open, onClose }) => {
                 mt:"10px",
               }}
             >
-             <Buttons
-                text="Update&Save"
-                bgcolor="#5078E1"
-                textcolor="white"
-                // onClick={handleSaveDiscount}
-                sx={{
-                  boxShadow: "none",
-                  border: "1px solid #bdbfbe",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "10px",
-                  fontWeight: 600,
-                  fontSize: "16px",
-                  mr:"px",
-                }}
-              />
+             <Button variant="contained"> Update & Save </Button> 
             </Box>
           </Grid2>
         </Grid2>
